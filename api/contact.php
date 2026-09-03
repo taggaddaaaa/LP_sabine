@@ -15,7 +15,7 @@ $in = json_decode(file_get_contents('php://input'), true);
 if (!is_array($in)) { http_response_code(400); echo json_encode(['error' => 'json']); exit; }
 
 // piège à robots : si rempli, on fait semblant d'accepter
-if (!empty($in['site_web'])) { echo json_encode(['ok' => true]); exit; }
+if (!empty($in['cv_ref'])) { echo json_encode(['ok' => true]); exit; }
 
 $name  = trim($in['name']  ?? '');
 $email = trim($in['email'] ?? '');

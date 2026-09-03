@@ -214,7 +214,7 @@ footer a{color:var(--gris)}
       <div class="champ"><label for="e">Votre email</label><input id="e" type="email" name="email" required autocomplete="email"></div>
       <div class="champ"><label for="t">Votre téléphone</label><input id="t" type="tel" name="phone" autocomplete="tel" placeholder="Pour vous rappeler"></div>
       <div class="champ"><label for="c">Votre activité et votre ville</label><input id="c" name="company" placeholder="Ex : paysagiste à Castelnau"></div>
-      <input class="hp" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input class="hp" name="cv_ref" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn btn--p" type="submit" id="sb" style="width:100%;justify-content:center">Je réserve ma place</button>
       <div class="msg" id="msg"></div>
       <div class="ou-sep">ou</div>
@@ -241,7 +241,7 @@ const f=document.getElementById('f'),msg=document.getElementById('msg'),sb=docum
 f.addEventListener('submit',async ev=>{
   ev.preventDefault();msg.className='msg';
   const d=Object.fromEntries(new FormData(f));
-  if(d.site_web)return;
+  if(d.cv_ref)return;
   if(!d.name||!d.email||!d.email.includes('@')){msg.className='msg msg--ko';msg.textContent="Il me faut au moins votre nom et un email valide.";return}
   d.projectSlug='site-vitrine';d.origine='Landing site vitrine 350 €';
   d.besoin='Site vitrine (offre de lancement)';
