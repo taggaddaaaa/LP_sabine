@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--brume);color:var(--encre);font-family:var(--txt);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 
 /* ---------- lumière du sud : halos animés ---------- */
@@ -78,8 +78,8 @@ h1{font-size:clamp(36px,6.6vw,68px);margin:0 0 22px}
 h1 .grad{background:linear-gradient(96deg,var(--soleil-fonce) 0%,var(--corail) 55%,var(--soleil) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .chapo{font-size:clamp(16.5px,2vw,19px);color:var(--gris);max-width:46ch;margin:0 0 30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.portrait{position:relative}
-.portrait img{border-radius:28px;box-shadow:var(--halo-fort)}
+.portrait{position:relative;width:100%;max-width:300px;margin-left:auto}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:28px;box-shadow:var(--halo-fort)}
 .portrait .flot{position:absolute;padding:12px 16px;border-radius:16px;font-size:13px;font-weight:700;font-family:var(--dsp);line-height:1.35}
 .flot--1{bottom:18px;left:-26px;animation:flotte 7s ease-in-out infinite}
 .flot--1 b{display:block;font-size:19px;background:linear-gradient(96deg,var(--soleil-fonce),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -100,6 +100,8 @@ h2{font-size:clamp(28px,4.8vw,46px);margin:0 0 16px}
 .srv h3{font-family:var(--dsp);font-weight:700;font-size:20px;margin:0 0 8px;letter-spacing:-.015em}
 .srv p{margin:0 0 14px;font-size:15.3px;color:var(--gris)}
 .srv .prix{font-family:var(--dsp);font-weight:800;font-size:15px;color:var(--soleil-fonce)}
+.srv .lien-offre{display:block;margin-top:12px;font-family:var(--dsp);font-weight:700;font-size:14px;color:var(--mer-fonce);text-decoration:none}
+.srv .lien-offre:hover{text-decoration:underline}
 .srv--phare{grid-column:span 2;background:linear-gradient(125deg,rgba(6,182,212,.1),rgba(255,255,255,.66) 46%,rgba(245,158,11,.12));border-color:rgba(6,182,212,.28)}
 .srv--phare .ico{background:linear-gradient(140deg,rgba(6,182,212,.2),rgba(14,116,144,.14));border-color:rgba(6,182,212,.3)}
 .srv--phare h3{font-size:25px}
@@ -262,7 +264,7 @@ footer a{color:var(--gris)}
       </div>
     </div>
     <div class="portrait rev">
-      <img src="assets/sabine.jpg" width="600" height="600" alt="Sabine Caizergues" onerror="this.style.display='none'">
+      <img src="assets/sabine.jpg" width="288" height="288" alt="Sabine Caizergues" onerror="this.style.display='none'">
       <div class="flot flot--1 verre"><b>4 sites</b>en ligne aujourd'hui</div>
       <div class="flot flot--2 verre">École 42 · HEC</div>
     </div>
@@ -311,6 +313,7 @@ footer a{color:var(--gris)}
       <h3 class="dsp">Site vitrine</h3>
       <p>Une page claire et rapide, pensée pour le téléphone. Vos photos, vos horaires, vos avis, un bouton pour vous appeler. Nom de domaine offert la première année, et un espace pour tout modifier vous-même.</p>
       <span class="prix">À partir de 350 € · 7 jours</span>
+      <a class="lien-offre" href="site-vitrine/">Voir l'offre de lancement à 350 € →</a>
     </div>
     <div class="srv verre">
       <div class="ico">🛍️</div>
@@ -320,7 +323,7 @@ footer a{color:var(--gris)}
     </div>
     <div class="srv verre">
       <div class="ico">📣</div>
-      <h3 class="dsp">Vos réseaux, avec Posté.</h3>
+      <h3 class="dsp">Vos réseaux sociaux</h3>
       <p>Vos publications préparées chaque semaine à partir de vos vraies photos. Vous relisez, vous validez d'un clic depuis votre téléphone, c'est publié.</p>
       <span class="prix">Sur abonnement</span>
     </div>
@@ -355,16 +358,16 @@ footer a{color:var(--gris)}
   <p class="eyebrow rev">Réalisations</p>
   <h2 class="dsp rev">Ce que j'ai déjà construit.</h2>
   <div class="lignes stag">
-    <div class="lg"><div><div class="nom">LOC'KARTING</div><div class="sec">Loisirs · Pérols</div></div>
+    <div class="lg"><div><img class="shot" src="assets/lockarting.jpg" alt="Site LOC'KARTING" loading="lazy" onerror="this.remove()"><div class="nom">LOC'KARTING</div><div class="sec">Loisirs · Pérols</div></div>
       <p>Sept ans avec le même client : le site, puis un logiciel de chronométrage sur mesure, puis une application mobile sur l'App Store. La refonte a donné <b>+17 % de transformation en un mois</b>, en basse saison.</p>
       <a class="go" href="https://www.lockarting.fr" target="_blank" rel="noopener">Voir ↗</a></div>
-    <div class="lg"><div><div class="nom">Naturaline</div><div class="sec">Bien-être · Montpellier</div></div>
+    <div class="lg"><div><img class="shot" src="assets/naturaline.jpg" alt="Site Naturaline" loading="lazy" onerror="this.remove()"><div class="nom">Naturaline</div><div class="sec">Bien-être · Montpellier</div></div>
       <p>Cabinet de naturopathie et bien-être. Consultations, hypnose, massages : un site qui devait inspirer confiance et sérénité avant même le premier rendez-vous.</p>
       <a class="go" href="https://naturaline34.fr" target="_blank" rel="noopener">Voir ↗</a></div>
-    <div class="lg"><div><div class="nom">Bel Beauté Concept</div><div class="sec">Formation · Avignon</div></div>
+    <div class="lg"><div><img class="shot" src="assets/belbeaute.jpg" alt="Site Bel Beauté Concept" loading="lazy" onerror="this.remove()"><div class="nom">Bel Beauté Concept</div><div class="sec">Formation · Avignon</div></div>
       <p>Centre de formation en esthétique. Belén forme des professionnels depuis vingt-cinq ans : le site devait porter cette autorité sans perdre la douceur du métier.</p>
       <a class="go" href="https://belbeauteconcept.com" target="_blank" rel="noopener">Voir ↗</a></div>
-    <div class="lg"><div><div class="nom">ROOFUP</div><div class="sec">Photovoltaïque · B2B</div></div>
+    <div class="lg"><div><img class="shot" src="assets/roofup.jpg" alt="Site ROOFUP" loading="lazy" onerror="this.remove()"><div class="nom">ROOFUP</div><div class="sec">Photovoltaïque · B2B</div></div>
       <p>Centrales solaires sur toitures contraintes, pour une entreprise qui travaille avec Eiffage, Spie Batignolles et NGE. Un site technique qui devait rassurer des donneurs d'ordre exigeants.</p>
       <a class="go" href="https://roofup.fr" target="_blank" rel="noopener">Voir ↗</a></div>
     <div class="lg"><div><img class="shot" src="assets/argiles.jpeg" alt="Site Argilès Baró Architectes" loading="lazy" onerror="this.remove()"><div class="nom">Argilès Baró</div><div class="sec">Architectes</div></div>
