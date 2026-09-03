@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://sabinecaizergues.fr/</loc><lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <image:image><image:loc>https://sabinecaizergues.fr/assets/og-accueil.jpg</image:loc><image:title>Sabine Caizergues, votre partenaire digitale</image:title></image:image></url>
+  <url><loc>https://sabinecaizergues.fr/site-vitrine/</loc><lastmod>2026-09-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://sabinecaizergues.fr/assets/og-site-vitrine.jpg</image:loc><image:title>Site vitrine professionnel en 7 jours pour 490 €</image:title></image:image></url>
+</urlset>
