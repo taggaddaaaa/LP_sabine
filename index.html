@@ -1,0 +1,478 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sites web, référencement naturel et présence en ligne pour les entreprises de Montpellier et sa région. Votre partenaire digitale.">
+<link rel="canonical" href="https://sabinecaizergues.fr/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sabine Caizergues · Votre partenaire digitale · Montpellier">
+<meta property="og:description" content="Sites web, référencement et présence en ligne pour les entreprises d'ici.">
+<meta property="og:image" content="https://sabinecaizergues.fr/assets/sabine.jpg">
+<meta property="og:url" content="https://sabinecaizergues.fr/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Sabine Caizergues · Sites web et visibilité en ligne · Montpellier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blanc:#fff; --brume:#F6F8FC; --voile:rgba(255,255,255,.62); --voile-fort:rgba(255,255,255,.82);
+  --encre:#111722; --gris:#59657A; --gris-pale:#8C97A8; --bord:rgba(17,23,34,.09);
+  --soleil:#F59E0B; --soleil-fonce:#C2710A; --corail:#FF6B4A; --mer:#06B6D4; --mer-fonce:#0E7490;
+  --halo:0 1px 2px rgba(17,23,34,.04), 0 18px 40px -22px rgba(17,23,34,.28);
+  --halo-fort:0 2px 6px rgba(17,23,34,.06), 0 30px 60px -28px rgba(17,23,34,.34);
+  --dsp:"Outfit",-apple-system,BlinkMacSystemFont,sans-serif;
+  --txt:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --r:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--brume);color:var(--encre);font-family:var(--txt);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- lumière du sud : halos animés ---------- */
+.ciel{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(120% 90% at 50% -10%, #FFF9EE 0%, var(--brume) 55%)}
+.blob{position:absolute;border-radius:50%;filter:blur(75px);opacity:.5;will-change:transform}
+.b1{width:52vw;height:52vw;background:radial-gradient(circle,#FFC94D,#F59E0B 55%,transparent 72%);top:-16vw;right:-12vw;animation:drift1 26s ease-in-out infinite}
+.b2{width:44vw;height:44vw;background:radial-gradient(circle,#FF9E7A,#FF6B4A 55%,transparent 72%);top:38vh;left:-16vw;opacity:.36;animation:drift2 32s ease-in-out infinite}
+.b3{width:40vw;height:40vw;background:radial-gradient(circle,#7FE6F5,#06B6D4 55%,transparent 72%);bottom:-14vw;right:6vw;opacity:.3;animation:drift3 29s ease-in-out infinite}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.32;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E")}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6vw,5vh) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7vw,-6vh) scale(1.15)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-5vw,-7vh) scale(1.1)}}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(18px,4.5vw,40px)}
+.dsp{font-family:var(--dsp);font-weight:800;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+.eyebrow{font-family:var(--dsp);font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  background:linear-gradient(96deg,var(--soleil-fonce),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent;margin:0 0 14px}
+
+/* ---------- verre ---------- */
+.verre{background:var(--voile);backdrop-filter:blur(22px) saturate(165%);-webkit-backdrop-filter:blur(22px) saturate(165%);
+  border:1px solid rgba(255,255,255,.7);box-shadow:var(--halo);border-radius:var(--r)}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:14px;z-index:50;margin:14px auto 0;max-width:1120px;padding:0 clamp(18px,4.5vw,40px)}
+.navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 12px 11px 20px;border-radius:100px}
+.marque{font-family:var(--dsp);font-weight:800;font-size:17.5px;letter-spacing:-.02em;text-decoration:none}
+.marque i{font-style:normal;background:linear-gradient(96deg,var(--soleil),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navlinks{display:flex;gap:22px;font-size:14.5px;font-weight:500}
+.navlinks a{text-decoration:none;color:var(--gris);transition:color .2s}
+.navlinks a:hover{color:var(--encre)}
+@media(max-width:860px){.navlinks{display:none}}
+
+/* ---------- boutons ---------- */
+.btn{font-family:var(--dsp);font-weight:700;font-size:15px;text-decoration:none;border-radius:100px;padding:14px 26px;display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;transition:transform .22s cubic-bezier(.2,.9,.3,1),box-shadow .22s}
+.btn--p{background:linear-gradient(96deg,var(--soleil),var(--corail));color:#fff;box-shadow:0 10px 26px -10px rgba(245,158,11,.75)}
+.btn--p:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(245,158,11,.9)}
+.btn--g{background:var(--voile-fort);color:var(--encre);border:1px solid var(--bord);backdrop-filter:blur(12px)}
+.btn--g:hover{transform:translateY(-2px)}
+.btn--s{padding:11px 20px;font-size:14px}
+
+/* ---------- hero ---------- */
+header{padding:clamp(48px,9vw,104px) 0 clamp(36px,6vw,64px)}
+.hero{display:grid;grid-template-columns:1.28fr .72fr;gap:clamp(28px,5vw,58px);align-items:center}
+h1{font-size:clamp(36px,6.6vw,68px);margin:0 0 22px}
+h1 .grad{background:linear-gradient(96deg,var(--soleil-fonce) 0%,var(--corail) 55%,var(--soleil) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chapo{font-size:clamp(16.5px,2vw,19px);color:var(--gris);max-width:46ch;margin:0 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.portrait{position:relative}
+.portrait img{border-radius:28px;box-shadow:var(--halo-fort)}
+.portrait .flot{position:absolute;padding:12px 16px;border-radius:16px;font-size:13px;font-weight:700;font-family:var(--dsp);line-height:1.35}
+.flot--1{bottom:18px;left:-26px;animation:flotte 7s ease-in-out infinite}
+.flot--1 b{display:block;font-size:19px;background:linear-gradient(96deg,var(--soleil-fonce),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent}
+.flot--2{top:-16px;right:-14px;animation:flotte 9s ease-in-out infinite reverse}
+@keyframes flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.portrait{max-width:260px;order:-1}.flot--1{left:-10px}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(52px,9vw,104px) 0}
+h2{font-size:clamp(28px,4.8vw,46px);margin:0 0 16px}
+.sous{color:var(--gris);max-width:58ch;margin:0 0 40px;font-size:17px}
+
+/* ---------- services ---------- */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:16px}
+.srv{padding:28px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.9,.3,1),box-shadow .3s}
+.srv:hover{transform:translateY(-5px);box-shadow:var(--halo-fort)}
+.srv .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;margin-bottom:16px;background:linear-gradient(140deg,rgba(245,158,11,.16),rgba(255,107,74,.14));border:1px solid rgba(245,158,11,.22)}
+.srv h3{font-family:var(--dsp);font-weight:700;font-size:20px;margin:0 0 8px;letter-spacing:-.015em}
+.srv p{margin:0 0 14px;font-size:15.3px;color:var(--gris)}
+.srv .prix{font-family:var(--dsp);font-weight:800;font-size:15px;color:var(--soleil-fonce)}
+.srv--phare{grid-column:span 2;background:linear-gradient(125deg,rgba(6,182,212,.1),rgba(255,255,255,.66) 46%,rgba(245,158,11,.12));border-color:rgba(6,182,212,.28)}
+.srv--phare .ico{background:linear-gradient(140deg,rgba(6,182,212,.2),rgba(14,116,144,.14));border-color:rgba(6,182,212,.3)}
+.srv--phare h3{font-size:25px}
+.srv--phare .prix{color:var(--mer-fonce)}
+@media(max-width:640px){.srv--phare{grid-column:span 1}}
+
+/* ---------- réalisations ---------- */
+.reas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.rea{padding:26px;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.9,.3,1),box-shadow .3s}
+.rea:hover{transform:translateY(-5px);box-shadow:var(--halo-fort)}
+.puce{font-family:var(--dsp);font-weight:700;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;padding:5px 11px;border-radius:100px;align-self:flex-start;margin-bottom:13px}
+.puce--live{background:rgba(6,182,212,.14);color:var(--mer-fonce)}
+.puce--cas{background:rgba(245,158,11,.15);color:var(--soleil-fonce)}
+.rea .shot{border-radius:14px;margin-bottom:14px;border:1px solid var(--bord);aspect-ratio:16/10;object-fit:cover;object-position:top}
+.rea h3{font-family:var(--dsp);font-weight:700;font-size:21px;margin:0 0 9px;letter-spacing:-.015em}
+.rea p{margin:0 0 11px;font-size:15.3px;color:var(--gris)}
+.rea .pied{margin-top:auto;padding-top:14px;border-top:1px solid var(--bord);font-size:13.5px;color:var(--gris-pale)}
+.rea .pied a{color:var(--mer-fonce);font-weight:700;text-decoration:none}
+
+/* ---------- témoignages ---------- */
+.temoins{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px}
+.tem{padding:28px}
+.tem .guill{font-family:var(--dsp);font-size:52px;line-height:.7;background:linear-gradient(96deg,var(--soleil),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tem p{font-size:16.5px;margin:10px 0 18px}
+.tem .qui{font-size:13.5px;color:var(--gris)}
+.tem .qui b{display:block;font-family:var(--dsp);font-size:15px;color:var(--encre)}
+
+/* ---------- parcours ---------- */
+.frise{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:14px}
+.pas{padding:22px}
+.pas .an{font-family:var(--dsp);font-weight:700;font-size:12px;letter-spacing:.09em;color:var(--corail)}
+.pas h4{font-family:var(--dsp);font-weight:700;font-size:17px;margin:7px 0 6px}
+.pas p{margin:0;font-size:14.6px;color:var(--gris)}
+
+/* ---------- contact ---------- */
+.contact{padding:clamp(32px,5vw,54px);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,249,238,.7));border:1px solid rgba(255,255,255,.8)}
+.cgrid{display:grid;grid-template-columns:1fr 1.12fr;gap:clamp(24px,4vw,48px);align-items:start}
+@media(max-width:800px){.cgrid{grid-template-columns:1fr}}
+.champ{margin-bottom:14px}
+label{display:block;font-family:var(--dsp);font-weight:700;font-size:13px;margin-bottom:6px}
+input,textarea,select{width:100%;font-family:var(--txt);font-size:15.5px;padding:13px 15px;border-radius:13px;border:1px solid var(--bord);background:rgba(255,255,255,.82);color:var(--encre);transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--soleil);box-shadow:0 0 0 4px rgba(245,158,11,.16)}
+textarea{resize:vertical;min-height:104px}
+.hp{position:absolute;left:-9999px}
+.msg{margin-top:14px;padding:14px 16px;border-radius:14px;font-size:15px;display:none}
+.msg--ok{display:block;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.35)}
+.msg--ko{display:block;background:rgba(255,107,74,.12);border:1px solid rgba(255,107,74,.4)}
+
+.ou-sep{display:flex;align-items:center;gap:14px;margin:22px 0 16px;color:var(--pale);font-family:var(--d);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.ou-sep::before,.ou-sep::after{content:"";flex:1;height:1px;background:var(--bord)}
+.autres{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(max-width:560px){.autres{grid-template-columns:1fr}}
+.autre{display:flex;gap:13px;align-items:center;text-decoration:none;color:inherit;padding:15px 17px;border-radius:15px;
+  background:rgba(255,255,255,.66);border:1px solid var(--bord);transition:transform .22s,box-shadow .22s,border-color .22s}
+.autre:hover{transform:translateY(-2px);box-shadow:var(--halo);border-color:var(--soleil)}
+.autre .ic{font-size:21px;flex:none}
+.autre b{font-family:var(--d);font-size:15px;display:block}
+.autre span{font-size:13.6px;color:var(--gris)}
+.direct{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.direct a{display:flex;align-items:center;gap:13px;text-decoration:none;padding:14px 18px;border-radius:15px;background:rgba(255,255,255,.66);border:1px solid var(--bord);font-weight:700;font-family:var(--dsp);transition:transform .2s}
+.direct a:hover{transform:translateX(4px)}
+.direct span{font-size:20px}
+
+footer{padding:38px 0 62px;font-size:13.5px;color:var(--gris-pale);text-align:center}
+footer a{color:var(--gris)}
+
+
+/* ---------- bande douleur ---------- */
+.bande-douleur{background:linear-gradient(180deg,rgba(255,107,74,.07),rgba(245,158,11,.05));border-top:1px solid rgba(255,107,74,.14);border-bottom:1px solid rgba(255,107,74,.14)}
+.phrases{max-width:760px;margin:0 auto}
+.ph{display:flex;gap:16px;align-items:flex-start;padding:17px 0;border-bottom:1px solid var(--bord)}
+.ph:last-child{border-bottom:0}
+.ph .q{font-family:var(--dsp);font-size:26px;line-height:1;flex:none;background:linear-gradient(96deg,var(--corail),var(--soleil));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ph p{margin:0;font-size:17.5px}
+.ph small{display:block;color:var(--gris);font-size:14.6px;margin-top:5px}
+.reponse{text-align:center;max-width:640px;margin:38px auto 0;font-family:var(--dsp);font-weight:700;font-size:clamp(19px,2.8vw,25px);line-height:1.4;letter-spacing:-.015em}
+
+/* ---------- méthode : 3 étapes ---------- */
+.etapes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,34px);counter-reset:e}
+@media(max-width:760px){.etapes{grid-template-columns:1fr;gap:26px}}
+.et{counter-increment:e;position:relative;padding-top:14px}
+.et::before{content:counter(e);font-family:var(--dsp);font-weight:800;font-size:64px;line-height:.8;
+  background:linear-gradient(150deg,var(--soleil),var(--corail));-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:12px}
+.et h3{font-family:var(--dsp);font-weight:700;font-size:20px;margin:0 0 8px;letter-spacing:-.015em}
+.et p{margin:0;font-size:15.5px;color:var(--gris)}
+.et::after{content:"";position:absolute;top:34px;left:calc(100% - 6px);width:calc(100% - 40px);height:1px;
+  background:linear-gradient(90deg,rgba(245,158,11,.5),transparent)}
+.et:last-child::after{display:none}
+@media(max-width:760px){.et::after{display:none}}
+
+/* ---------- réalisations en lignes ---------- */
+.lignes{display:flex;flex-direction:column;gap:14px}
+.lg{display:grid;grid-template-columns:186px 1fr auto;gap:22px;align-items:center;padding:22px 26px;border-radius:18px;
+  background:var(--voile);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(255,255,255,.68);box-shadow:var(--halo);transition:transform .3s cubic-bezier(.2,.9,.3,1),box-shadow .3s}
+.lg:hover{transform:translateX(6px);box-shadow:var(--halo-fort)}
+.lg .nom{font-family:var(--dsp);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.lg .sec{font-size:12.6px;color:var(--pale-txt, #8C97A8);font-family:var(--dsp);font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-top:5px}
+.lg p{margin:0;font-size:15.3px;color:var(--gris)}
+.lg .shot{width:100%;border-radius:12px;border:1px solid var(--bord);margin-bottom:10px;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.lg .go{font-family:var(--dsp);font-weight:700;font-size:14px;color:var(--mer-fonce);text-decoration:none;white-space:nowrap}
+.lg .go:hover{text-decoration:underline}
+@media(max-width:780px){.lg{grid-template-columns:1fr;gap:9px;padding:20px}}
+
+/* ---------- parcours : vraie frise ---------- */
+.frise2{position:relative;max-width:720px;margin:0 auto;padding-left:34px}
+.frise2::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--soleil),var(--corail) 50%,var(--mer))}
+.jalon{position:relative;padding:0 0 30px 0}
+.jalon:last-child{padding-bottom:0}
+.jalon::before{content:"";position:absolute;left:-31px;top:7px;width:12px;height:12px;border-radius:50%;
+  background:var(--blanc);border:3px solid var(--soleil);box-shadow:0 0 0 4px rgba(245,158,11,.15)}
+.jalon.pt::before{border-color:var(--mer);box-shadow:0 0 0 4px rgba(6,182,212,.16)}
+.jalon .an{font-family:var(--dsp);font-weight:700;font-size:12.5px;letter-spacing:.09em;color:var(--corail)}
+.jalon h4{font-family:var(--dsp);font-weight:700;font-size:18.5px;margin:4px 0 6px;letter-spacing:-.015em}
+.jalon p{margin:0;font-size:15.4px;color:var(--gris)}
+
+/* ---------- animations d'entrée ---------- */
+.rev{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .8s cubic-bezier(.2,.9,.3,1),transform .8s cubic-bezier(.2,.9,.3,1),filter .8s}
+.rev.in{opacity:1;transform:none;filter:none}
+.stag>*{opacity:0;transform:translateY(22px);filter:blur(5px)}
+.stag.in>*{animation:pop .78s cubic-bezier(.2,.9,.3,1) forwards}
+.stag.in>*:nth-child(1){animation-delay:.04s}.stag.in>*:nth-child(2){animation-delay:.11s}
+.stag.in>*:nth-child(3){animation-delay:.18s}.stag.in>*:nth-child(4){animation-delay:.25s}
+.stag.in>*:nth-child(5){animation-delay:.32s}.stag.in>*:nth-child(6){animation-delay:.39s}
+.stag.in>*:nth-child(7){animation-delay:.46s}
+.stag.in>*:nth-child(8){animation-delay:.53s}
+.stag.in>*:nth-child(9){animation-delay:.6s}
+@keyframes pop{to{opacity:1;transform:none;filter:none}}
+.load>*{opacity:0;animation:pop .9s cubic-bezier(.2,.9,.3,1) forwards}
+.load>*:nth-child(1){animation-delay:.06s}.load>*:nth-child(2){animation-delay:.16s}
+.load>*:nth-child(3){animation-delay:.26s}.load>*:nth-child(4){animation-delay:.36s}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rev,.stag>*,.load>*{opacity:1!important;transform:none!important;filter:none!important}
+}
+</style>
+
+<div class="ciel"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grain"></div>
+
+<nav><div class="navin verre">
+  <a class="marque" href="#">Sabine Caizergues<i>.</i></a>
+  <div class="navlinks">
+    <a href="#services">Services</a><a href="#travail">Réalisations</a><a href="#parcours">Parcours</a>
+  </div>
+  <a class="btn btn--p btn--s" href="#contact">Me contacter</a>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="hero">
+    <div class="load">
+      <p class="eyebrow">Votre partenaire digitale · Montpellier et sa région</p>
+      <h1 class="dsp">Vous êtes très bon<br>dans votre métier.<br><span class="grad">Encore faut-il qu'on vous trouve.</span></h1>
+      <p class="chapo">Je rends visibles les entreprises qui le méritent : un site qui vous ressemble, une place sur Google sans payer de publicité, vos réseaux qui tournent, et le temps que vous perdez sur l'administratif qu'on automatise.</p>
+      <div class="cta">
+        <a class="btn btn--p" href="#reconnaissez">Vous vous reconnaissez ?</a>
+        <a class="btn btn--g" href="#services">Ce que je fais</a>
+      </div>
+    </div>
+    <div class="portrait rev">
+      <img src="assets/sabine.jpg" width="600" height="600" alt="Sabine Caizergues" onerror="this.style.display='none'">
+      <div class="flot flot--1 verre"><b>4 sites</b>en ligne aujourd'hui</div>
+      <div class="flot flot--2 verre">École 42 · HEC</div>
+    </div>
+  </div>
+</div></header>
+
+
+<section class="bande-douleur" id="reconnaissez"><div class="wrap">
+  <p class="eyebrow rev" style="text-align:center">Avant de parler de moi</p>
+  <h2 class="dsp rev" style="text-align:center;margin-bottom:34px">Est-ce que vous vous reconnaissez ?</h2>
+  <div class="phrases stag">
+    <div class="ph"><span class="q">«</span><p>Quand on cherche mon métier dans ma ville, ce sont mes concurrents qui sortent.<small>Et pourtant vous êtes meilleur qu'eux. Vous êtes juste moins visible.</small></p></div>
+    <div class="ph"><span class="q">«</span><p>J'ai un site, mais il date et je n'ose plus le montrer.<small>Il est illisible sur téléphone, là où sont pourtant huit visiteurs sur dix.</small></p></div>
+    <div class="ph"><span class="q">«</span><p>Pour changer un horaire, je dois attendre trois semaines et payer.<small>C'est exactement ce que je refuse de faire vivre à mes clients.</small></p></div>
+    <div class="ph"><span class="q">«</span><p>Je publie sur les réseaux quand j'y pense. C'est-à-dire jamais.<small>Ce n'est pas un manque de volonté. C'est un manque de temps et d'idées.</small></p></div>
+    <div class="ph"><span class="q">«</span><p>J'ai d'excellents avis clients, et personne ne les voit.<small>Votre meilleur argument de vente dort sur une fiche que personne n'a optimisée.</small></p></div>
+    <div class="ph"><span class="q">«</span><p>Je passe mes soirées sur des tâches qui pourraient se faire toutes seules.<small>Relances, devis, réponses aux mêmes questions : c'est du temps volé à votre famille.</small></p></div>
+  </div>
+  <p class="reponse rev">Si vous avez hoché la tête au moins une fois,<br>on a de quoi discuter dix minutes.</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow rev">Comment ça se passe</p>
+  <h2 class="dsp rev">Trois étapes, zéro jargon.</h2>
+  <p class="sous rev">Vous n'avez pas besoin de comprendre la technique. Vous avez besoin que quelqu'un comprenne votre métier.</p>
+  <div class="etapes stag">
+    <div class="et"><h3 class="dsp">On se parle</h3><p>Vingt minutes, au téléphone ou chez vous, sans engagement. Je vous écoute, je regarde ce que vous avez déjà, et je vous dis franchement si je peux vous aider ou non.</p></div>
+    <div class="et"><h3 class="dsp">Je construis</h3><p>Vous voyez avancer, vous donnez votre avis, on ajuste. Pas de découverte le jour de la livraison, pas de surprise sur la facture.</p></div>
+    <div class="et"><h3 class="dsp">Vous gardez la main</h3><p>Un espace simple pour modifier vos textes, vos photos et vos horaires vous-même. Et je reste joignable : c'est moi qui décroche.</p></div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <p class="eyebrow rev">Ce que je fais</p>
+  <h2 class="dsp rev">Toute votre présence en ligne,<br>par une seule personne.</h2>
+  <p class="sous rev">Vous n'avez pas besoin d'une agence avec cinq interlocuteurs. Vous avez besoin de quelqu'un qui comprend votre métier et qui décroche quand vous appelez.</p>
+  <div class="services stag">
+    <div class="srv srv--phare verre">
+      <div class="ico">🎯</div>
+      <h3 class="dsp">Le référencement naturel</h3>
+      <p>C'est ma spécialité et ma conviction : être trouvé sur Google <b>sans payer de publicité</b>. Quand quelqu'un cherche votre métier dans votre ville, c'est vous qui devez sortir. Un site sans référencement est une belle vitrine dans une rue sans passage.</p>
+      <span class="prix">Inclus dans chaque site</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">✨</div>
+      <h3 class="dsp">Site vitrine</h3>
+      <p>Une page claire et rapide, pensée pour le téléphone. Vos photos, vos horaires, vos avis, un bouton pour vous appeler. Nom de domaine offert la première année, et un espace pour tout modifier vous-même.</p>
+      <span class="prix">À partir de 350 € · 7 jours</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">🛍️</div>
+      <h3 class="dsp">Site complet ou boutique</h3>
+      <p>Plusieurs pages, catalogue, réservation en ligne, paiement. Quand la vitrine ne suffit plus et qu'il faut vendre ou réserver directement.</p>
+      <span class="prix">Sur devis</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">📣</div>
+      <h3 class="dsp">Vos réseaux, avec Posté.</h3>
+      <p>Vos publications préparées chaque semaine à partir de vos vraies photos. Vous relisez, vous validez d'un clic depuis votre téléphone, c'est publié.</p>
+      <span class="prix">Sur abonnement</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">📍</div>
+      <h3 class="dsp">Présence locale</h3>
+      <p>Fiche Google Business optimisée, avis clients, horaires, itinéraire. C'est souvent le premier endroit où on vous cherche, et le plus négligé.</p>
+      <span class="prix">Audit gratuit</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">🚀</div>
+      <h3 class="dsp">Publicité en ligne</h3>
+      <p>Campagnes Google Ads et Meta quand il faut accélérer sur une saison, un lancement ou une zone précise. Avec un budget maîtrisé et des chiffres clairs.</p>
+      <span class="prix">Sur devis</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">⏱️</div>
+      <h3 class="dsp">Automatiser ce qui vous prend du temps</h3>
+      <p>Relances clients, réponses aux questions qui reviennent, devis, suivi : beaucoup de ces tâches peuvent se faire sans vous. C'est mon autre métier, et c'est souvent là qu'on gagne le plus.</p>
+      <span class="prix">Sur devis · après diagnostic</span>
+    </div>
+    <div class="srv verre">
+      <div class="ico">⚙️</div>
+      <h3 class="dsp">Développement sur mesure</h3>
+      <p>Un besoin que rien ne couvre ? Je développe. J'ai créé un logiciel de chronométrage et une application mobile publiée sur l'App Store pour un circuit de karting.</p>
+      <span class="prix">Sur devis</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="travail"><div class="wrap">
+  <p class="eyebrow rev">Réalisations</p>
+  <h2 class="dsp rev">Ce que j'ai déjà construit.</h2>
+  <div class="lignes stag">
+    <div class="lg"><div><div class="nom">LOC'KARTING</div><div class="sec">Loisirs · Pérols</div></div>
+      <p>Sept ans avec le même client : le site, puis un logiciel de chronométrage sur mesure, puis une application mobile sur l'App Store. La refonte a donné <b>+17 % de transformation en un mois</b>, en basse saison.</p>
+      <a class="go" href="https://www.lockarting.fr" target="_blank" rel="noopener">Voir ↗</a></div>
+    <div class="lg"><div><div class="nom">Naturaline</div><div class="sec">Bien-être · Montpellier</div></div>
+      <p>Cabinet de naturopathie et bien-être. Consultations, hypnose, massages : un site qui devait inspirer confiance et sérénité avant même le premier rendez-vous.</p>
+      <a class="go" href="https://naturaline34.fr" target="_blank" rel="noopener">Voir ↗</a></div>
+    <div class="lg"><div><div class="nom">Bel Beauté Concept</div><div class="sec">Formation · Avignon</div></div>
+      <p>Centre de formation en esthétique. Belén forme des professionnels depuis vingt-cinq ans : le site devait porter cette autorité sans perdre la douceur du métier.</p>
+      <a class="go" href="https://belbeauteconcept.com" target="_blank" rel="noopener">Voir ↗</a></div>
+    <div class="lg"><div><div class="nom">ROOFUP</div><div class="sec">Photovoltaïque · B2B</div></div>
+      <p>Centrales solaires sur toitures contraintes, pour une entreprise qui travaille avec Eiffage, Spie Batignolles et NGE. Un site technique qui devait rassurer des donneurs d'ordre exigeants.</p>
+      <a class="go" href="https://roofup.fr" target="_blank" rel="noopener">Voir ↗</a></div>
+    <div class="lg"><div><img class="shot" src="assets/argiles.jpeg" alt="Site Argilès Baró Architectes" loading="lazy" onerror="this.remove()"><div class="nom">Argilès Baró</div><div class="sec">Architectes</div></div>
+      <p>Cabinet d'architectes, site conçu avec Kintsuki Agency. Un métier où l'image fait tout : la mise en valeur des projets primait sur le reste.</p>
+      <span class="sec">Hors ligne</span></div>
+    <div class="lg"><div><img class="shot" src="assets/zigzag.jpeg" alt="Site ZigZag Catamaran" loading="lazy" onerror="this.remove()"><div class="nom">ZigZag Catamaran</div><div class="sec">Nautisme</div></div>
+      <p>Loueur de catamarans : réservation, saisonnalité, photos de navigation. Exactement les enjeux des activités du littoral.</p>
+      <span class="sec">Hors ligne</span></div>
+    <div class="lg"><div><div class="nom">Playerz</div><div class="sec">Cofondatrice</div></div>
+      <p>Application pour entraîneurs de football, données en temps réel. <b>Prix Sport du Culturathon</b> et <b>2e prix du hackathon OpenField16</b> du Ministère de la Ville, de la Jeunesse et des Sports.</p>
+      <span class="sec">2015 · 2016</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow rev">Ce qu'elles en disent</p>
+  <h2 class="dsp rev">Des clientes, pas des arguments.</h2>
+  <div class="temoins stag">
+    <div class="tem verre"><div class="guill">"</div>
+      <p>J'attire beaucoup plus de clients aujourd'hui grâce à elle. Un grand merci Sabine, tu m'as aidée à sauver mon business.</p>
+      <div class="qui"><b>Isabelle Mai</b>Home organiser, consultante et formatrice</div></div>
+    <div class="tem verre"><div class="guill">"</div>
+      <p>Toujours disponible, et avec la patience de m'expliquer les choses : je suis étrangère à tout ce qui est numérique. Grâce à elle, mon image de marque correspond à mon travail.</p>
+      <div class="qui"><b>Belen Sebastian</b>Formatrice pour les professionnels de l'esthétique</div></div>
+    <div class="tem verre"><div class="guill">"</div>
+      <p>Elle a conçu mon site et s'est chargée de son référencement. Entièrement satisfaite de son travail et de ses conseils avisés. Je vous la recommande vivement.</p>
+      <div class="qui"><b>Coralie Privat</b>Sophrologue et hypnothérapeute</div></div>
+  </div>
+</div></section>
+
+<section id="parcours"><div class="wrap">
+  <p class="eyebrow rev">Mon parcours</p>
+  <h2 class="dsp rev">Pourquoi je vous comprends<br>plus vite qu'une agence.</h2>
+  <p class="sous rev">Je n'ai pas appris le code à vingt ans dans une école d'ingénieurs. J'ai d'abord tenu un commerce, géré des équipes et piloté des projets. Quand vous me parlez de vos journées, je ne fais pas semblant de comprendre.</p>
+  <div class="frise2 stag">
+    <div class="jalon"><div class="an">2001 · 2009</div><h4 class="dsp">Le terrain</h4><p>Coiffeuse, ambulancière, hôtesse de l'air. Des métiers où on est debout, où on a des clients en face, où une journée mal organisée se paie tout de suite.</p></div>
+    <div class="jalon"><div class="an">2011 · 2013</div><h4 class="dsp">Ma propre boutique</h4><p>Gérante des Gourmands'z de Sabine. Mes journées de douze heures, mes fins de mois, mes clients. C'est de là que vient ma façon de travailler avec vous.</p></div>
+    <div class="jalon pt"><div class="an">2014 · 2018</div><h4 class="dsp">École 42, Paris</h4><p>À trente ans, je reprends tout à zéro pour apprendre à coder. J'en ressors avec un niveau master 2 en développement informatique.</p></div>
+    <div class="jalon pt"><div class="an">2016</div><h4 class="dsp">HEC Paris</h4><p>Track Digital Entrepreneur, créé par HEC et l'École 42 avec Xavier Niel. Première promotion, cent vingt sélectionnés.</p></div>
+    <div class="jalon pt"><div class="an">2019 · 2020</div><h4 class="dsp">Ambassadrice, formée par Facebook</h4><p>Programme #SheMeansBusiness : formée par Facebook sur Facebook et Instagram, puis chargée d'organiser les masterclass d'Occitanie. Plus de deux cents professionnelles formées.</p></div>
+    <div class="jalon"><div class="an">2022 · 2025</div><h4 class="dsp">Studi · assistante de la cheffe des opérations</h4><p>Gestion de projet à grande échelle : j'ai participé à l'organisation du déménagement de plus de six cents collaborateurs, depuis dix sites, vers un bâtiment de dix mille mètres carrés. <b>Et j'ai encadré une équipe de quatre personnes</b> : je connais les difficultés et les joies de manager, parce que je les ai vécues.</p></div>
+    <div class="jalon"><div class="an">Aujourd'hui</div><h4 class="dsp">À mon compte</h4><p>Je construis mes propres outils et j'accompagne les entreprises de la région. C'est ce que je préfère faire.</p></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="contact verre rev">
+    <div class="cgrid">
+      <div>
+        <p class="eyebrow">On en parle ?</p>
+        <h2 class="dsp" style="font-size:clamp(26px,3.6vw,38px)">Dix minutes suffisent pour savoir si ça vaut le coup.</h2>
+        <p class="sous" style="margin-bottom:0">Dites-moi ce que vous faites et ce qui vous manque. Si votre projet n'est pas pour moi, je vous le dirai franchement.</p>
+        <div class="direct">
+          <a href="https://tidycal.com/ultrafacile/15-min-vos-projets" target="_blank" rel="noopener"><span>📅</span>Choisir mon créneau</a>
+          <a href="tel:+33646561787"><span>📞</span>06 46 56 17 87</a>
+          <a href="mailto:sabine@ultrafacile.fr"><span>✉️</span>sabine@ultrafacile.fr</a>
+        </div>
+      </div>
+      <form id="f" novalidate>
+        <div class="champ"><label for="n">Votre nom</label><input id="n" name="name" required autocomplete="name"></div>
+        <div class="champ"><label for="c">Votre entreprise</label><input id="c" name="company" autocomplete="organization"></div>
+        <div class="champ"><label for="e">Votre email</label><input id="e" type="email" name="email" required autocomplete="email"></div>
+        <div class="champ"><label for="t">Votre téléphone</label><input id="t" type="tel" name="phone" autocomplete="tel"></div>
+        <div class="champ"><label for="b">Ce dont vous auriez besoin</label>
+          <select id="b" name="besoin">
+            <option>Un site vitrine</option><option>Un site complet ou une boutique</option>
+            <option>Être mieux référencé sur Google</option><option>M'occuper de mes réseaux sociaux</option>
+            <option>Ma fiche Google Business</option><option>De la publicité en ligne</option>
+            <option>Autre chose / je ne sais pas encore</option>
+          </select></div>
+        <div class="champ"><label for="m">Votre message</label><textarea id="m" name="message" placeholder="Racontez-moi en deux lignes ce que vous faites."></textarea></div>
+        <input class="hp" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn--p" type="submit" id="sb" style="width:100%;justify-content:center">Envoyer ma demande</button>
+        <div class="msg" id="msg"></div>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  Sabine Caizergues · Votre partenaire digitale · Montpellier et sa région<br>
+  <a href="https://www.linkedin.com/in/sabinecaizergues/" target="_blank" rel="noopener">LinkedIn</a>
+</div></footer>
+
+<script>
+// révélations au défilement
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rev,.stag').forEach(el=>io.observe(el));
+
+// formulaire -> proxy PHP -> CRM operator
+const f=document.getElementById('f'),msg=document.getElementById('msg'),sb=document.getElementById('sb');
+const REPLI="Une erreur est survenue de mon côté. Écrivez-moi directement à sabine@ultrafacile.fr ou appelez le 06 46 56 17 87, je réponds vite.";
+f.addEventListener('submit',async(ev)=>{
+  ev.preventDefault();
+  msg.className='msg';
+  const d=Object.fromEntries(new FormData(f));
+  if(d.site_web){return}                              // piège à robots
+  if(!d.name||!d.email||!d.email.includes('@')){
+    msg.className='msg msg--ko';msg.textContent="Il me faut au moins votre nom et un email valide.";return;
+  }
+  sb.disabled=true;sb.textContent="Envoi…";
+  try{
+    const r=await fetch('api/contact.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+    if(!r.ok)throw new Error('http '+r.status);
+    msg.className='msg msg--ok';
+    msg.textContent="C'est envoyé, merci ! Je vous réponds sous 24 heures, souvent bien avant.";
+    f.reset();
+  }catch(e){
+    msg.className='msg msg--ko';msg.textContent=REPLI;
+  }finally{sb.disabled=false;sb.textContent="Envoyer ma demande";}
+});
+</script>
