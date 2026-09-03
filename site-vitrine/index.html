@@ -93,6 +93,7 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--soleil);box
 .msg{margin-top:14px;padding:15px 17px;border-radius:14px;font-size:15.5px;display:none}
 .msg--ok{display:block;background:var(--vert-c);border:1px solid rgba(15,123,84,.3)}
 .msg--ko{display:block;background:rgba(255,107,74,.12);border:1px solid rgba(255,107,74,.4)}
+.msg a{color:var(--soleil-f);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 
 .ou-sep{display:flex;align-items:center;gap:14px;margin:22px 0 16px;color:var(--pale);font-family:var(--d);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
 .ou-sep::before,.ou-sep::after{content:"";flex:1;height:1px;background:var(--bord)}
@@ -250,7 +251,7 @@ f.addEventListener('submit',async ev=>{
     if(!r.ok)throw 0;
     msg.className='msg msg--ok';msg.textContent="C'est noté, votre place est réservée. Je vous rappelle sous 24 heures.";f.reset();
   }catch(e){
-    msg.className='msg msg--ko';msg.textContent="Une erreur est survenue de mon côté. Appelez-moi au 06 46 56 17 87 ou écrivez à sabine@ultrafacile.fr.";
+    msg.className='msg msg--ko';msg.innerHTML='Une erreur est survenue de mon côté. Appelez-moi au <a href="tel:+33646561787">06 46 56 17 87</a> ou écrivez à <a href="mailto:sabine@ultrafacile.fr">sabine@ultrafacile.fr</a>.';
   }finally{sb.disabled=false;sb.textContent="Je réserve ma place"}
 });
 </script>

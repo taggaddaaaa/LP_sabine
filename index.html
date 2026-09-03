@@ -147,6 +147,7 @@ textarea{resize:vertical;min-height:104px}
 .msg{margin-top:14px;padding:14px 16px;border-radius:14px;font-size:15px;display:none}
 .msg--ok{display:block;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.35)}
 .msg--ko{display:block;background:rgba(255,107,74,.12);border:1px solid rgba(255,107,74,.4)}
+.msg a{color:var(--soleil-fonce);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 
 .ou-sep{display:flex;align-items:center;gap:14px;margin:22px 0 16px;color:var(--pale);font-family:var(--d);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
 .ou-sep::before,.ou-sep::after{content:"";flex:1;height:1px;background:var(--bord)}
@@ -455,7 +456,7 @@ document.querySelectorAll('.rev,.stag').forEach(el=>io.observe(el));
 
 // formulaire -> proxy PHP -> CRM operator
 const f=document.getElementById('f'),msg=document.getElementById('msg'),sb=document.getElementById('sb');
-const REPLI="Une erreur est survenue de mon côté. Écrivez-moi directement à sabine@ultrafacile.fr ou appelez le 06 46 56 17 87, je réponds vite.";
+const REPLI='Une erreur est survenue de mon côté. Écrivez-moi directement à <a href="mailto:sabine@ultrafacile.fr">sabine@ultrafacile.fr</a> ou appelez le <a href="tel:+33646561787">06 46 56 17 87</a>, je réponds vite.';
 f.addEventListener('submit',async(ev)=>{
   ev.preventDefault();
   msg.className='msg';
@@ -472,7 +473,7 @@ f.addEventListener('submit',async(ev)=>{
     msg.textContent="C'est envoyé, merci ! Je vous réponds sous 24 heures, souvent bien avant.";
     f.reset();
   }catch(e){
-    msg.className='msg msg--ko';msg.textContent=REPLI;
+    msg.className='msg msg--ko';msg.innerHTML=REPLI;
   }finally{sb.disabled=false;sb.textContent="Envoyer ma demande";}
 });
 </script>
