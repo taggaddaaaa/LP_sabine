@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit JC Élagage</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;800&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#fbfdf8; --alt:#fdfbd2; --fg:#14200f; --muted:#4f5c4a; --brand:#208019; --line:#e2ebc9;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Jost","Futura",system-ui,sans-serif; --body:"Jost","Futura",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e160c;--alt:#1d2410;--fg:#eef0e8;--muted:#aab0a0;--brand:#fff86b;--line:#2c3a24;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#141e11;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e160c;--alt:#1d2410;--fg:#eef0e8;--muted:#aab0a0;--brand:#fff86b;--line:#2c3a24;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#141e11;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 19 octobre 2026</div>
+  <h1>JC Élagage : une note parfaite et un vrai savoir-faire, mais 2 avis seulement et un site web que Google lit mal</h1>
+  <p class="lead">Jean, vos clients vous mettent 5 sur 5 sur Google, et votre site web explique votre métier mieux que beaucoup : démontage des arbres en sécurité, taille des oliviers, conseils de saison. Mais avec deux avis seulement, une page d'accueil sans titre principal et une seule commune vraiment citée, Google et les assistants IA ont peu de raisons de vous proposer à Vauvert, Lunel ou Saint-Gilles. Et votre site web est sur Wix : il se loue, il ne vous appartient pas.</p>
+  <div class="meta">
+    <span>Site web : <b>jc-elagage30.fr</b></span>
+    <span>Fait avec : <b>Wix, 6 pages visibles et 2 pages oubliées</b></span>
+    <span>Fiche Google : <b>5,0 / 5 · 2 avis</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v bad">À refaire</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v warn">À développer</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v ok">Bon</div><div class="l">Obligations légales</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>Déjà 2e à Vauvert sur Google Maps</h3><p>Relevé du 19 octobre : vous sortez 2e quand on cherche « élagueur Vauvert », avec seulement deux avis. La base est là ; avec des avis réguliers et un site web bien réglé, vous pouvez prendre la première place et vous étendre à Lunel et Saint-Gilles.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un artisan qui sait expliquer son métier</h3><p>Démontage des arbres par sections avec freinage, taille des fruitiers et des oliviers après la récolte, outils de coupe mécaniques pour les haies vives : votre page prestations et vos 828 mots de conseils « Automne/Hiver » montrent un vrai savoir-faire. Peu d'élagueurs du secteur écrivent autant, et c'est exactement la matière qu'il faut pour être trouvé.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Une note parfaite sur Google</h3><p>5 sur 5 : les clients qui ont laissé un avis sont satisfaits. La base est bonne, il ne reste qu'à faire parler les autres.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des chantiers aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Pas assez de contenu pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « un élagueur près de Vauvert ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Wix a créé les deux tout seul, mais ils sont presque vides : la fiche d'identité donne votre nom et votre adresse au Cailar, sans téléphone, sans horaires, sans zone ni services ; et le <code>llms.txt</code> parle d'« une zone d'intervention » sans citer une seule commune. Un assistant IA ne sait pas que vous intervenez à Vauvert, Lunel ou Saint-Gilles.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Une page d'accueil sans titre principal</h3><p>La page d'accueil n'a aucune balise H1, le gros titre que Google lit en premier pour comprendre le sujet d'une page. Les mots « élagueur », « élagage » ou « Vauvert » n'y sont donc portés par aucun titre ; seul l'onglet du navigateur dit « aux alentours de Vauvert ».</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Treize communes listées, une seule vraiment travaillée</h3><p>Votre page contact cite Aigues-Vives, Aimargues, Beauvoisin, Codognan, Gallargues, Le Cailar, Lunel, Marsillargues, Saint-Gilles, Saint-Laurent-d'Aigouze, Vauvert, Vergèze et Vestric, mais dans une simple liste. L'accueil ne parle que du Cailar et de Vauvert, et aucune page n'est dédiée à une commune. On cherche un élagueur par ville : « élagueur Lunel », « abattage pin Saint-Gilles ».</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Wix vous loue votre site web</h3><p>Un site web Wix ne se déménage pas : si vous arrêtez l'abonnement, il disparaît, et les réglages de référencement local y restent limités. C'est pour ça que je ne travaille pas le référencement sur Wix : je refais le site web, et il vous appartient.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Deux avis Google, et une page Avis vide</h3><p>5 sur 5, mais sur deux avis seulement. Votre site web a même une page <code>/témoignages</code> (titre « Avis ») qui ne contient rien. Les clients comparent le nombre d'avis avant d'appeler, et Google aussi. Demander un avis après chaque chantier, avec un lien direct par SMS, se fait en dix secondes.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>L'accueil parle du printemps en octobre</h3><p>Le bloc « C'est le moment de » propose la taille « après le froid et les gelées » et la tonte « après les fortes pluies de ces dernières semaines » pour préparer le printemps. En pleine saison d'élagage d'automne, un visiteur se demande si le site web est encore suivi.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Deux pages oubliées déclarées à Google</h3><p>Le plan de votre site web envoyé à Google contient une page <code>/test</code> (un formulaire d'essai « Laissez un message ») et la page <code>/témoignages</code> vide. Ce sont des pages que Google peut afficher sous votre nom.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Un nouveau site web sur mesure, qui vous appartient</h3><p>Un vrai titre sur chaque page avec le métier et la commune, une page par prestation (élagage et démontage, haies, fruitiers et oliviers, tonte et débroussaillage, « Petits + »), vos conseils de saison repris, vos avis affichés, un bouton d'appel sur chaque page, mentions légales reprises, fiche d'identité complète et llms.txt pour Google et les assistants IA. Rapide sur téléphone, et vous modifiez vous-même vos textes et vos photos.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Des pages qui répondent aux recherches</h3><p>Vauvert, Lunel, Saint-Gilles, Aimargues, Vergèze : une page par commune de votre zone, écrite à partir de vos chantiers réels, pour sortir partout où vous intervenez, pas seulement au Cailar.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Des avis qui suivent la qualité de votre travail</h3><p>Un lien direct vers votre fiche Google à envoyer par SMS après chaque chantier, une fiche complétée (prestations, zone, photos de chantiers), et les réponses aux avis tenues. Passer de 2 à 20 avis change la façon dont Google et les clients vous regardent.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT<span class="was">1 490 €</span></div><h3>Nouveau site web sur mesure</h3><ul><li>Site web sur mesure, à vous, pas loué</li><li>Une page par prestation, vos avis affichés, bouton d'appel</li><li>Nom de domaine conservé, pages oubliées supprimées</li><li>Un espace simple pour modifier vous-même textes, photos et horaires</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « un élagueur près de Vauvert » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos de chantier, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C'est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c'est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C'est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c'est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C'est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd'hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c'est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu'à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d'œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l'appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos chantiers viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Ceux qui vous trouvent sur Google vous mettent 5 sur 5. Avec plus d'avis et une page par commune, ils seront beaucoup plus nombreux à vous trouver."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Les réseaux montrent votre travail, mais personne n'y tape « élagueur Lunel ». Un site web bien réglé, c'est ce qui fait venir ceux qui cherchent."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d'ici trois mois : c'est l'une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de demandes de devis en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux chantiers de plus par mois, c'est à portée avec une page par commune et quelques avis de plus."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq, c'est un objectif réaliste à six mois sur une zone de 13 communes, si les avis suivent."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="JC Élagage : mes réponses à votre audit",SIGN="Jean\nJC Élagage",SITE="jc-elagage30.fr";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Votre métier est solide et votre ambition est claire. Envoyez vos réponses, je prépare un plan chiffré commune par commune, de Vauvert à Lunel, avant qu'on se parle.";
+    return "Tout est réuni : un savoir-faire que vos textes montrent déjà et une note parfaite. Il ne manque qu'un vrai site web et des avis. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. Demandes de devis en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 19 octobre 2026 sur jc-elagage30.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>
