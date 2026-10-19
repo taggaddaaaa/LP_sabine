@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /audit/
 Sitemap: https://sabinecaizergues.fr/sitemap.xml
