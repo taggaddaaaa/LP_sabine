@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit VTC Even Driver</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#f8f8f6; --alt:#ecece7; --fg:#1a1a1a; --muted:#55554f; --brand:#2b2b2b; --line:#d8d8d2;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Montserrat",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121414;--alt:#1b1f20;--fg:#eef0f0;--muted:#aab0b0;--brand:#e0c36b;--line:#2c3233;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b1c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121414;--alt:#1b1f20;--fg:#eef0f0;--muted:#aab0b0;--brand:#e0c36b;--line:#2c3233;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b1c;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 29 octobre 2026</div>
+  <h1>VTC Even Driver : 27 avis à 5,0, mais 9e sur « VTC Nîmes », absent de Caissargues et une fiche Google sans photo</h1>
+  <p class="lead">Even, vos clients vous mettent 5,0 sur Google, sur 27 avis, et parlent de ponctualité, de discrétion, d'un anglais parfait et d'une voiture propre. Quand on cherche « VTC gare Nîmes » sur Google Maps, vous sortez 6e ; 7e pour l'aéroport et pour « chauffeur privé Nîmes ». Mais sur « VTC Nîmes », la recherche la plus tapée, vous n'êtes que 9e, et à Caissargues, Marguerittes ou Bouillargues, vous n'apparaissez pas. Votre site web est récent et propre, mais il tient en 234 mots sur l'accueil, sans titre principal, loué à Squarespace, et il ne dit ni à Google ni aux assistants IA qui vous êtes et où.</p>
+  <div class="meta">
+    <span>Site web : <b>vtcevendriver.fr</b></span>
+    <span>Fait avec : <b>Squarespace, 7 pages</b></span>
+    <span>Fiche Google : <b>5,0 / 5 · 27 avis</b></span>
+    <span>Réseaux : <b>Facebook (25 abonnés) et Instagram reliés au site web</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v bad">À refaire</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v ok">Bon</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Invisible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>27 avis à 5,0, et des clients qui disent pourquoi</h3><p>Une moyenne de 5,0 sur 27 avis, avec des mots précis : ponctualité, fiabilité, discrétion, anglais parfait, connaissance du secteur. C'est exactement ce qu'un voyageur d'affaires lit avant de réserver pour la gare ou l'aéroport.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>6e pour la gare de Nîmes, 7e pour l'aéroport</h3><p>Relevé du 29 octobre sur Google Maps : 6e sur « VTC gare Nîmes » (19 résultats), 7e sur « VTC aéroport Nîmes » (14), 7e sur « chauffeur privé Nîmes » (20). Votre fiche est ouverte 24h/24, renvoie vers le site web et affiche le bon numéro.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Des mentions légales complètes, un site web récent</h3><p>Vos mentions légales donnent tout ce qu'il faut (SAS VTC Even Driver, SIREN, responsable de publication, hébergeur), il y a une politique de confidentialité, une page de questions fréquentes, et le plan du site web date de septembre 2026 : vous venez de le faire, le contenu est frais.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des clients aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>9e sur « VTC Nîmes », absent de Caissargues, Marguerittes et Bouillargues</h3><p>Relevé du 29 octobre sur Google Maps : 9e sur « VTC Nîmes » (20 résultats), absent des 18 résultats sur « VTC Caissargues », absent sur « VTC Marguerittes » (2 résultats affichés), « VTC Bouillargues » (5) et « taxi Nîmes » (20). Votre page Services cite Nîmes onze fois, Montpellier, Vauvert, Aigues-Mortes, La Grande-Motte, mais aucune commune n'a sa page, et l'accueil ne dit que « Nîmes et alentours ». Avec 27 avis à 5,0 face à des concurrents qui en ont moins, vous devriez être devant : il manque des pages, et une fiche d'identité.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « un VTC à Nîmes pour la gare ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a ni l'un ni l'autre : <code>/llms.txt</code> répond « page introuvable », et le code ne décrit qu'un « site web » nommé « VTC Even Driver », avec une description vide : ni adresse, ni prestations, ni vos 27 avis. Pour un assistant IA, vous êtes un nom sans adresse.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Squarespace vous loue votre site web</h3><p>Un site web Squarespace ne se déménage pas : si vous arrêtez l'abonnement, il disparaît, et les réglages de référencement local y restent limités à ce que l'outil permet. Vos mentions légales le disent : l'hébergeur est Squarespace, 225 Varick Street, New York. C'est pour ça que je ne travaille pas le référencement sur Squarespace : je refais le site web, et il vous appartient.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un accueil de 234 mots, sans titre principal</h3><p>L'accueil compte 234 mots, la page À propos 177, le contact 114, et aucune page du site web n'a de titre principal (balise H1), celui que Google lit en premier. Les prestations sont listées en six mots (« transfert aéroport », « TRANSFERT GARE », « mise a disposition ») sans une ligne pour les décrire. Google classe des pages qui disent quelque chose.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Une fiche Google sans photo ni description</h3><p>Votre fiche Google n'a aucune photo (Google propose d'en « ajouter une ») ni description, alors que c'est la première chose qu'un client regarde pour un VTC : la voiture. Votre page Facebook compte 25 abonnés et votre Instagram est relié, mais ni l'un ni l'autre n'est relié à la fiche.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un panier de boutique en ligne dans un site web de VTC</h3><p>Le code de votre accueil charge le panier et le module de boutique de Squarespace (page <code>/cart</code>, 57 mots, et un compteur « 0 » en haut de page), que vous n'utilisez pas, et aucune de vos 12 images ne se charge à la demande. Sur un téléphone entre deux trains, c'est du poids pour rien.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Un nouveau site web sur mesure, qui vous appartient</h3><p>Je reprends votre contenu (services, questions fréquentes, mentions légales) dans un site web rapide, à vous, avec un vrai titre par page, une page par prestation (gare, aéroport, mise à disposition, transferts de nuit, longue distance), vos 27 avis affichés, un bouton d'appel partout, une fiche d'identité complète et un <code>llms.txt</code> pour Google et les assistants IA. Vous modifiez vous-même textes, photos et tarifs.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Des pages qui répondent aux recherches</h3><p>VTC Nîmes, gare de Nîmes et Nîmes-Pont-du-Gard, aéroport de Nîmes-Garons et de Montpellier, Caissargues, Marguerittes, Bouillargues, Vauvert, Aigues-Mortes, La Grande-Motte : une page par recherche, écrite à partir de vos trajets réels et reliée à votre fiche, pour que votre 5,0 serve sur toute votre zone.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Une fiche Google complétée, tenue, et la mesure chaque mois</h3><p>Photos de la voiture et du chauffeur, description, services, Facebook et Instagram reliés, une réponse à chaque avis, et votre position montrée chaque mois, captures à l'appui, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT<span class="was">1 490 €</span></div><h3>Nouveau site web sur mesure</h3><ul><li>Site web sur mesure, à vous, pas loué</li><li>Une page par prestation et par commune, rédigée, vos 27 avis affichés, bouton d'appel</li><li>Nom de domaine vtcevendriver.fr conservé, mentions légales rédigées</li><li>Fiche Google et réseaux remis d'aplomb et reliés au site web</li><li>Un espace simple pour modifier vous-même textes, photos et tarifs</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « un VTC à Nîmes pour la gare » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Un seul client régulier gagné dans l'année, un transfert aéroport par mois, paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos clients viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : avec 27 avis à 5,0, vous êtes 6e pour la gare. La même mécanique peut vous mettre devant sur « VTC Nîmes » et dans les communes voisines, il lui manque juste des pages à vous et une fiche complète."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Instagram et Facebook rassurent, mais personne n&#x27;y tape « VTC gare Nîmes ». Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de clients réguliers en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux clients réguliers de plus par mois, c&#x27;est à portée : il suffit de sortir sur « VTC Nîmes » comme vous sortez pour la gare."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq, c&#x27;est un objectif réaliste à six mois avec 27 avis à 5,0, une page par prestation et par commune, et une fiche avec des photos."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="VTC Even Driver : mes réponses à votre audit",SIGN="Even\nVTC Even Driver",SITE="vtcevendriver.fr",DEM="Clients réguliers";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Dix clients réguliers de plus par mois, c'est un deuxième véhicule. Envoyez vos réponses, je prépare un plan chiffré commune par commune avant qu'on se parle.";
+    return "Tout est réuni : 27 avis à 5,0, une fiche vivante, un contenu frais. Il manque un site web qui vous appartient et qui dit ce que vous faites et où. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 29 octobre 2026 sur vtcevendriver.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>

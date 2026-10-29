@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Établissements Combet</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#f7f8fa; --alt:#e8ecf2; --fg:#1a2130; --muted:#525a6a; --brand:#2b4a7a; --line:#d4dae4;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Montserrat",system-ui,sans-serif; --body:"Open Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121414;--alt:#1b1f20;--fg:#eef0f0;--muted:#aab0b0;--brand:#9fbdea;--line:#2c3233;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b1c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121414;--alt:#1b1f20;--fg:#eef0f0;--muted:#aab0b0;--brand:#9fbdea;--line:#2c3233;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b1c;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 29 octobre 2026</div>
+  <h1>Établissements Combet : 1er à Bourg-Saint-Andéol en ambulance, VSL et pompes funèbres, mais 3e en taxi, absent de Pierrelatte, trois fiches Google et des mentions légales interdites</h1>
+  <p class="lead">David, quand on cherche « ambulance Bourg-Saint-Andéol », « VSL Bourg-Saint-Andéol » ou « pompes funèbres Bourg-Saint-Andéol » sur Google Maps, c'est vous qui sortez en premier, avec 12 avis à 4,7 et cinquante ans de maison. Mais en taxi vous êtes 3e chez vous, à Pierrelatte vous n'apparaissez pas malgré une page Pierrelatte, et Google affiche trois fiches Combet différentes qui se partagent vos avis. Votre site web est fourni, 96 pages, mais ses mentions légales répondent « accès interdit », l'adresse avec les trois w aussi, et son code ne dit rien à Google ni aux assistants IA sur qui vous êtes.</p>
+  <div class="meta">
+    <span>Site web : <b>groupecombet-ardeche.fr</b></span>
+    <span>Fait avec : <b>système d'agence, 96 pages</b></span>
+    <span>Fiche Google : <b>4,7 / 5 · 12 avis, trois fiches</b></span>
+    <span>Réseaux : <b>aucun lien depuis le site web</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v ok">Bon</div><div class="l">Référencement à Bourg-Saint-Andéol</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Invisible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>1er à Bourg-Saint-Andéol en ambulance, VSL et pompes funèbres</h3><p>Relevé du 29 octobre sur Google Maps : 1er sur « ambulance Bourg-Saint-Andéol » (7 résultats), 1er sur « VSL Bourg-Saint-Andéol » (7), 1er sur « pompes funèbres Bourg-Saint-Andéol » (5), 2e sur « taxi Viviers » (10), 4e sur « ambulance Saint-Marcel-d'Ardèche » (18). Vos clients parlent de chauffeurs agréables, de trajets courts acceptés, d'une entreprise familiale accueillante.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un site web qui a déjà une page par métier et par commune</h3><p>Quatre-vingt-seize pages : ambulance, taxi, VSL, transport médicalisé, transport scolaire, pompes funèbres, marbrerie et funérarium, chacun décliné pour Bourg-Saint-Andéol, Bollène, Pierrelatte, Le Teil, Viviers, Saint-Marcel, Saint-Martin, Saint-Montan, Saint-Remèze, Cruas et Larnas, en 650 à 750 mots. Plus un espace famille, un espace hommages et une charte RSE. Le contenu est là, et il est à vous.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Le même numéro et la même adresse partout</h3><p>Le 04 75 54 75 76 et le 11 avenue Félix Chalamel sont les mêmes sur le site web et sur la fiche Google « SARL Combet », qui renvoie bien vers groupecombet-ardeche.fr.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des clients aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « une ambulance à Bourg-Saint-Andéol ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a ni l'un ni l'autre : <code>/llms.txt</code> répond « page introuvable », et le code ne contient aucune fiche d'identité (pas de nom, d'adresse, de métiers ni d'avis lisibles par une machine), ni balise de partage, ni adresse canonique. Pour un assistant IA, vos 96 pages sont muettes.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Des mentions légales et une adresse www qui répondent « accès interdit »</h3><p>Relevé du 29 octobre : la page Mentions légales, celle que votre pied de page propose, répond « accès interdit » (code 403), et <code>www.groupecombet-ardeche.fr</code>, avec les trois w, répond 403 aussi. La politique de confidentialité est introuvable, alors qu'il y a un formulaire de contact et un espace famille. Ce n'est pas un reproche, ce sont des réglages d'hébergement, mais la loi exige les mentions légales, et c'est mon métier.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Trois fiches Google pour une maison</h3><p>Sur « ambulance Bourg-Saint-Andéol », Google affiche « SARL Combet », « Combet Père et Fils » et « SARL Combet et associé » ; sur « pompes funèbres Bourg-Saint-Andéol », « Combet Père et Fils » sort 1er sous un autre nom que votre fiche principale. Trois fiches, c'est trois fois moins d'avis sur chacune et des clients qui ne savent pas laquelle appeler. Google aime la cohérence : une fiche par métier et par adresse, bien nommée.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>3e en taxi chez vous, absent de Pierrelatte malgré votre page</h3><p>Relevé du 29 octobre sur Google Maps : 3e sur « taxi Bourg-Saint-Andéol » (11 résultats), absent sur « ambulance Pierrelatte » (4 résultats affichés) alors que votre site web a une page Ambulance à Pierrelatte. Une page ne suffit pas si elle n'est reliée à aucune fiche et si le code ne dit pas où vous êtes : Google classe des pages reliées à une adresse.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Deux numéros, et un titre principal qui ne dit ni le métier ni la ville</h3><p>Le site web affiche le 04 75 54 75 76 et le 04 75 04 22 65 (Pierrelatte) sans dire lequel appeler pour quoi, et le titre principal de l'accueil (balise H1) est « Etablissements Combet » : ni « ambulance », ni « taxi », ni « Bourg-Saint-Andéol ». Google lit le H1 en premier.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Pas d'image de partage, aucun réseau relié</h3><p>Quand on envoie votre lien par WhatsApp ou Messenger, ni titre ni image n'apparaissent : le code n'a aucune balise de partage. Et pas un lien Facebook ou Instagram sur le site web.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Une remise à niveau du site web, sans le refaire</h3><p>Votre contenu se garde : mentions légales et politique de confidentialité en ligne, adresse www réparée, une fiche d'identité complète (métiers, adresses, horaires, avis) et un <code>llms.txt</code> pour Google et les assistants IA, un titre principal qui dit le métier et la ville, un numéro par métier, une image de partage, un bouton d'appel sur chaque page. Si le système de votre agence ne permet pas ces réglages, je vous le dirai, et on reprendra vos 96 pages dans un site web à vous.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Des pages reliées aux recherches</h3><p>Taxi Bourg-Saint-Andéol, ambulance Pierrelatte, Le Teil, Viviers, Bollène, l'hôpital de Montélimar, la centrale du Tricastin : chaque page reliée à la bonne fiche Google et renforcée à partir de vos trajets réels, pour que vos premières places à Bourg-Saint-Andéol s'étendent au taxi et aux communes voisines.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Des fiches Google rangées et tenues, et la mesure chaque mois</h3><p>Les trois fiches clarifiées (une par métier et par adresse, bien nommées), services, horaires et photos à jour, une réponse à chaque avis et la demande d'avis après chaque transport, et votre position montrée chaque mois, captures à l'appui, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT</div><h3>Remise à niveau du site web existant</h3><ul><li>Votre site web gardé et remis à niveau, sans tout refaire</li><li>Vos 96 pages gardées, mentions légales et confidentialité en ligne, vos avis affichés, bouton d'appel</li><li>Fiche d'identité complète et llms.txt pour Google et les assistants IA</li><li>Fiche Google et réseaux remis d'aplomb et reliés au site web</li><li>Un espace simple pour modifier vous-même textes, photos et tarifs</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « une ambulance à Bourg-Saint-Andéol » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Un seul patient en transport régulier gagné dans l'année paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos clients viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : vous êtes 1er à Bourg-Saint-Andéol en ambulance et en VSL. La même mécanique peut jouer en taxi et à Pierrelatte, il lui manque juste une fiche d&#x27;identité et des fiches Google rangées."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Les réseaux rassurent, mais personne n&#x27;y tape « ambulance Pierrelatte ». Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de clients réguliers en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux clients réguliers de plus par mois, c&#x27;est à portée : il suffit de sortir en taxi et à Pierrelatte comme en ambulance à Bourg-Saint-Andéol."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq, c&#x27;est un objectif réaliste à six mois avec 96 pages déjà écrites, trois fiches rangées et une fiche d&#x27;identité pour les assistants IA."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Établissements Combet : mes réponses à votre audit",SIGN="David\nÉtablissements Combet",SITE="groupecombet-ardeche.fr",DEM="Clients réguliers";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Dix transports réguliers de plus par mois avec taxis, ambulances et VSL, c'est un véhicule occupé à plein. Envoyez vos réponses, je prépare un plan chiffré commune par commune avant qu'on se parle.";
+    return "Tout est réuni : 1er à Bourg-Saint-Andéol, cinquante ans de maison, 96 pages déjà écrites. Il manque des mentions légales qui s'ouvrent, une fiche d'identité pour les assistants IA et des fiches Google rangées. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 29 octobre 2026 sur groupecombet-ardeche.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>
