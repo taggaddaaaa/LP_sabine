@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Atom Fitness</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;800&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#f6f8fb; --alt:#e6edf6; --fg:#0f1419; --muted:#505862; --brand:#1660ff; --line:#d2dbe8;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Jost",system-ui,sans-serif; --body:"Jost",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121411;--alt:#1b1f19;--fg:#eef0ea;--muted:#aab0a3;--brand:#6fa8ff;--line:#2c3329;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b15;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121411;--alt:#1b1f19;--fg:#eef0ea;--muted:#aab0a3;--brand:#6fa8ff;--line:#2c3329;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#171b15;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 31 octobre 2026</div>
+  <h1>Atom Fitness : 4,9 sur 120 avis et 1er à Clermont-l'Hérault, mais absent de Gignac, de Lodève et de Canet, un accueil de 457 mots, et rien pour ChatGPT</h1>
+  <p class="lead">Kevin, quand on cherche « salle de sport Clermont-l'Hérault », « fitness Clermont-l'Hérault » ou « salle de musculation Clermont-l'Hérault » sur Google Maps, c'est votre club qui sort en premier, avec 4,9 sur 120 avis. Pourtant, à Gignac, Lodève, Paulhan ou Canet, les communes d'où viennent vos adhérents, vous n'apparaissez pas, et sur « cours collectifs Clermont-l'Hérault » AG Form passe devant vous. Votre site web n'aide pas : son titre d'onglet commence par un émoji, son titre principal dit « Performance Progression Résultat », son accueil tient en 457 mots pour trois clubs, et il n'existe pas pour ChatGPT.</p>
+  <div class="meta">
+    <span>Site web : <b>atom-fitness.fr</b></span>
+    <span>Fait avec : <b>WordPress, 15 pages</b></span>
+    <span>Fiche Google : <b>4,9 / 5 · 120 avis</b></span>
+    <span>Réseaux : <b>aucun lien depuis le site web</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v ok">Excellent</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>1er à Clermont-l'Hérault, 4,9 sur 120 avis</h3><p>Relevé du 31 octobre sur Google Maps : 1er sur « salle de sport Clermont-l'Hérault » (11 résultats), « fitness Clermont-l'Hérault » (20) et « salle de musculation Clermont-l'Hérault » (9), 2e sur « cours collectifs Clermont-l'Hérault ». Votre fiche Google, ouverte 24h/24, renvoie bien vers le site web.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un site web à jour, des mentions légales complètes</h3><p>WordPress avec WP Rocket, un plan du site web déclaré, des mentions légales complètes (KR Fit, SIRET, directeur de publication), une politique de confidentialité, une page de questions fréquentes et une page par club : Béziers, Clermont, Balaruc.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Trois clubs, 40 activités, 24h/24</h3><p>MMA, cours collectifs, cross training, musculation, carte adhérent sur smartphone, séance d'essai gratuite, frais de dossier offerts : l'offre est claire et moderne.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des adhérents aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Absent de Gignac, de Lodève, de Paulhan et de Canet</h3><p>Relevé du 31 octobre sur Google Maps : absent sur « salle de sport Lodève » (2 résultats), « salle de sport Canet » (19), et Google n'affiche aucune liste pour Gignac et Paulhan. Vos adhérents viennent de tout le Cœur d'Hérault, mais votre site web ne cite aucune de ces communes : Google classe des pages, et la vôtre ne parle que de Clermont.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Pas assez de contenu pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « une salle de sport ouverte 24h/24 près de Clermont-l'Hérault ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web a une fiche d'identité dans le code (organisation, point de contact, coordonnées GPS), mais elle ne porte ni vos trois adresses, ni vos horaires 24h/24, ni vos activités, ni vos 120 avis, et <code>/llms.txt</code> répond « page introuvable » (erreur 404). Un assistant IA sait que vous existez, pas que vous êtes ouverts la nuit à Clermont, Béziers et Balaruc.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un titre d'onglet qui commence par un émoji, un titre principal sans salle ni commune</h3><p>Le titre de l'onglet est « Salle de Sport 🏋️‍♀️plus de 40 activités et ouvert 24h24h 7j/7 365j / an » : un émoji collé au texte, « 24h24h » au lieu de « 24h/24 », et aucune commune. Le titre principal (balise H1) est « Performance Progression Résultat » : ni « salle de sport », ni Clermont-l'Hérault là où Google regarde en premier.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>457 mots pour trois clubs</h3><p>L'accueil compte 457 mots pour présenter trois salles, 40 activités et une application : chaque club a sa page, mais elles se ressemblent. Google met en avant les pages qui expliquent ce qui se passe dans chaque salle.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Aucun réseau relié, aucun avis affiché</h3><p>Pas un lien Instagram ou Facebook sur le site web, alors que c'est là que vivent les salles de sport, et vos 120 avis à 4,9 n'y apparaissent pas.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Une remise à niveau du site web, sans le refaire</h3><p>Un titre d'onglet et un titre principal avec « salle de sport » et chaque commune, une page par club vraiment différente (activités, coachs, horaires, avis), une fiche d'identité complète par club dans le code et un <code>llms.txt</code> pour Google et les assistants IA, vos avis affichés, vos réseaux reliés. Je vous le dis franchement : un WordPress reste plus lourd et moins optimisé qu'un site web sur mesure, mais le vôtre est à jour, on part de là.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Des pages qui répondent aux recherches</h3><p>Salle de sport Clermont-l'Hérault, Gignac, Lodève, Paulhan, Canet, Béziers, Balaruc, salle de sport 24h/24, cours collectifs, MMA, cross training : une page par recherche, écrite à partir de vos clubs réels, pour sortir dans tout le Cœur d'Hérault.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Vos trois fiches Google tenues</h3><p>Je relie les fiches, le site web et vos réseaux, je tiens activités, horaires et photos à jour, je demande un avis après chaque inscription, et je vous montre chaque mois où vous en êtes, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT</div><h3>Remise à niveau du site web existant</h3><ul><li>Votre site web gardé et remis à niveau, sans tout refaire</li><li>Titres corrigés, une page par club et par commune, rédigée</li><li>Vos avis affichés, réseaux reliés, fiche d'identité par club</li><li>Fiches Google remises d'aplomb et reliées au site web</li><li>Un espace simple pour modifier vous-même textes, photos et tarifs</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « une salle de sport près de Clermont-l'Hérault » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Une seule vague d'inscriptions de janvier gagnée paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos adhérents viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : vous êtes 1er à Clermont avec 4,9. La même mécanique peut jouer à Gignac, Lodève et Canet, il lui manque juste les pages."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Les réseaux, c&#x27;est là que vivent les salles de sport, mais personne n&#x27;y tape « salle de sport Gignac ». Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de inscriptions en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux inscriptions de plus par semaine, c&#x27;est à portée : il suffit d&#x27;exister à Gignac et Lodève comme à Clermont."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq, c&#x27;est un objectif réaliste à six mois vu vos avis, avec une page par club et par commune."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Atom Fitness : mes réponses à votre audit",SIGN="Kevin\nAtom Fitness",SITE="atom-fitness.fr",DEM="Inscriptions";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Avec trois clubs ouverts 24h/24, dix inscriptions de plus par semaine, c'est sérieux. Envoyez vos réponses, je prépare un plan chiffré club par club avant qu'on se parle.";
+    return "Tout est réuni : la première place à Clermont, 4,9 sur Google et trois clubs. Il manque les pages qui portent votre nom dans tout le Cœur d'Hérault. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 31 octobre 2026 sur atom-fitness.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>
