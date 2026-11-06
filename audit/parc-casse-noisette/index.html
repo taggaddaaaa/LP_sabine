@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Parc Casse Noisette</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#fbf7f1; --alt:#f1e7d9; --fg:#2a1f17; --muted:#6a5a4c; --brand:#8a5524; --line:#e2d4c2;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Poppins",system-ui,sans-serif; --body:"Poppins",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161210;--alt:#1f1915;--fg:#f0ebe4;--muted:#b3a89c;--brand:#dba36a;--line:#332a24;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1b1613;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161210;--alt:#1f1915;--fg:#f0ebe4;--muted:#b3a89c;--brand:#dba36a;--line:#332a24;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1b1613;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 6 novembre 2026</div>
+  <h1>Parc Casse Noisette : 4,7 sur Google et 135 pages, absent de Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène</h1>
+  <p class="lead">Christine, vos visiteurs vous mettent 4,7 sur Google, votre site web compte 135 pages et la réservation en ligne fonctionne. Mais ce 6 novembre, votre fiche Google affiche « Fermé temporairement », sans horaires ni date de réouverture, et quand une famille cherche « parc de loisirs Pont-Saint-Esprit », « parc de loisirs Bollène » ou « anniversaire enfant Bagnols-sur-Cèze » sur Google Maps, vous n'êtes dans aucun des résultats ; à Bagnols-sur-Cèze, vous êtes 19e sur 19. Votre voisin Accroche Aventure, lui, y figure à chaque fois. Et votre site web dit « Ardèche » là où Google vous place dans le Gard.</p>
+  <div class="meta">
+    <span>Site web : <b>parc-casse-noisette.com</b></span>
+    <span>Fait avec : <b>WordPress 6.9.11, thème Astra, 135 pages</b></span>
+    <span>Fiche Google : <b>4,7 / 5 · fiche « Fermé temporairement »</b></span>
+    <span>Réseaux : <b>Facebook et TikTok reliés au site web</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v warn">En sommeil</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>4,7 sur Google et un site web qui a du contenu</h3><p>Vos visiteurs vous mettent 4,7 sur Google, et votre site web compte 135 pages : une page par occasion (anniversaires, sorties scolaires et centres de loisirs, associations, EVG et EVJF, team building), une par activité (accrobranche, escape game nature, le village de Casse-Noisette, les Kangoodingos, la Krabahute), une FAQ, une quarantaine de pages d'hébergements partenaires et une trentaine de pages de villes et de lieux à découvrir. L'accueil fait 1 527 mots. Peu de parcs en font autant : la matière est là.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Réservation en ligne, tarifs et horaires en texte</h3><p>Le Pass 2026 se réserve en ligne depuis chaque page (module Guidap), et la page Infos pratiques donne la grille des tarifs par âge et par groupe, les escape games à 66 € la partie et les horaires de chaque semaine de la saison, en texte que Google lit, pas en image. Le site web est sécurisé, une seule adresse répond (les versions www et http redirigent bien), et le plan du site web est bien envoyé à Google.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Des coordonnées cohérentes et des mentions légales complètes</h3><p>Le 07 81 14 98 06 et l'adresse 281 chemin de Lafèbre sont les mêmes sur le site web et sur la fiche Google, qui renvoie bien vers le site web. Les mentions légales sont complètes (éditeur, gérante, hébergeur, concepteur) et une charte des données accompagne le formulaire de contact. Facebook et TikTok sont reliés depuis le pied de page.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des clients aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Une fiche « Fermé temporairement », absente de Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène</h3><p>Relevé du 6 novembre : votre fiche Google affiche « Fermé temporairement », « Ajouter des horaires » à la place des horaires, et votre dernière actualité date du 17 mai 2026 (week-end de Pentecôte) ; elle ne montre même plus le nombre de vos avis, seulement la note de 4,7. Votre site web, lui, annonce « ouvert d'avril à novembre » et une grille d'horaires jusqu'au 1er novembre. Résultat sur Google Maps le même jour : absent des 9 résultats de « parc de loisirs Pont-Saint-Esprit », 19e sur 19 sur « parc de loisirs Bagnols-sur-Cèze », absent des 5 de « parc de loisirs Bollène », absent des 20 de « anniversaire enfant Bagnols-sur-Cèze », absent des 13 de « activité enfants Pont-Saint-Esprit », absent des 20 de « parc d'attractions Gard » ; seule « aire de jeux Saint-Julien-de-Peyrolas » vous place 5e. Accroche Aventure, le parc voisin, sort 8e à Pont-Saint-Esprit, 18e à Bagnols-sur-Cèze et 16e sur les anniversaires. Une fiche fermée passe derrière toutes les fiches ouvertes, et une famille qui prépare un anniversaire de printemps ou les vacances de Pâques lit « fermé » et passe au suivant. Google prévoit pourtant des horaires par saison et une date de réouverture : la fiche reste visible tout l'hiver, avec « ouvre en avril » au lieu de « fermé ».</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « un parc de loisirs pour enfants près de Pont-Saint-Esprit ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a ni l'un ni l'autre : <code>/llms.txt</code> répond « page introuvable », et la fiche d'identité du code se limite à un nom et un logo (« Organization ») : ni adresse, ni horaires, ni tarifs, ni votre note. Et ce code, comme le titre de l'accueil, dit « parc d'attraction en Ardèche » : un assistant à qui l'on demande un parc pour enfants dans le Gard, à Pont-Saint-Esprit ou à Bagnols-sur-Cèze, n'a rien pour vous placer là où vous êtes vraiment. Le <code>robots.txt</code>, lui, laisse bien passer les assistants : la porte est ouverte, il n'y a rien derrière.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>« Ardèche » partout, et des pages Bollène, Bagnols, Pont-Saint-Esprit qui ne parlent pas de vous</h3><p>Le titre de l'onglet de l'accueil commence par « Parc d'attraction Ardèche » et le titre principal (balise H1) est « Parc d'attraction en Ardèche » : « Ardèche » apparaît 15 fois sur l'accueil, « Gard » 5 fois, et Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène jamais, alors que votre fiche Google vous place 281 chemin de Lafèbre, 30760 Saint-Julien-de-Peyrolas. Vos pages « Bollène » (256 mots), « Bagnols sur Cèze » (177 mots) et « Pont Saint Esprit » (216 mots) existent, mais elles racontent la ville (le village troglodyte du Barry, le pont médiéval, la légende du Pain Maudit) et renvoient vers l'office de tourisme ; le parc y est cité une ou deux fois, sans temps de route, sans tarif, sans bouton de réservation. Pour Google, ce sont des pages de guide touristique, pas celles d'un parc de loisirs où emmener ses enfants.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un WordPress en retard sur la version actuelle</h3><p>Votre site web tourne sous WordPress 6.9.11 alors que la version actuelle est la 7.1.4 (relevé du 6 novembre dans le flux du site web). Ce n'est pas un reproche : ces mises à jour se font à la main, avec le risque de casser la page, et ce n'est pas votre métier. Mais un WordPress en retard, c'est par là qu'arrivent les spams : faux messages dans votre formulaire de contact, liens indésirables glissés dans vos pages, et Google n'aime pas ça. C'est exactement le genre de chose que je prends en charge : les mises à jour sont faites pour vous, chaque mois, et vous n'y pensez plus.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Des « actualités » en latin et un « Pass 2025 » encore au menu</h3><p>La section « Les dernières actualités » de l'accueil propose « Article 1 », « Article 2 » et « Article 3 » : trois pages de faux texte latin (« Lorem ipsum dolor sit amet ») datées du 8 janvier 2025, livrées avec le modèle et toujours en ligne, dans le plan du site web envoyé à Google. Le menu affiche encore « Réservation Pass 2025 » à côté du Pass 2026, cinq pages portent un numéro en guise d'adresse (<code>/2811-2/</code>, <code>/2791-2/</code>...) au lieu du nom du camping qu'elles présentent, la charte des données parle de « parc-casse-noisette.fr » alors que votre adresse est en .com, et l'accueil n'a pas bougé depuis le 16 septembre 2025. Ce n'est pas un reproche, personne ne prévient, mais un visiteur le voit, et Google aussi.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Deux pages clés sans titre principal, des descriptions en « En savoir plus… »</h3><p>Les pages « Activités pour groupe » (1 518 mots) et « Parc Casse-Noisette Ardèche » (1 218 mots), vos deux pages les plus fournies, n'ont pas de titre principal (balise H1), celui que Google lit en premier ; la page Blog non plus. Les pages Activités et FAQ n'ont aucune description pour Google, et Hébergements, À découvrir, Les activités à découvrir et Lieux et villages authentiques ont pour toute description « En savoir plus… ». C'est ce texte que Google affiche sous votre nom dans les résultats.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Rouvrir la fiche Google, avant tout le reste</h3><p>Remplacer « Fermé temporairement » par des horaires de saison avec la date de réouverture d'avril, remettre horaires et tarifs, publier une actualité par mois tout l'hiver (anniversaires, sorties scolaires, la saison prochaine), répondre aux avis et relier la fiche aux pages Anniversaires et Groupes : c'est ce qui vous fait remonter à Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène, et ça se fait en premier.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Une remise à niveau du site web, sans le refaire</h3><p>Votre WordPress se garde : « Gard » et « Saint-Julien-de-Peyrolas » dans le titre à côté de l'Ardèche, les deux titres principaux manquants ajoutés, une vraie description par page, les trois articles en latin et le Pass 2025 retirés, les pages Bollène, Bagnols-sur-Cèze et Pont-Saint-Esprit réécrites pour parler du parc (temps de route, tarifs, réservation), une fiche d'identité complète (adresse, horaires, tarifs, note) et un <code>llms.txt</code> pour Google et les assistants IA, WordPress mis à jour. Je vous le dis franchement : un WordPress reste plus lourd qu'un site web sur mesure, mais le vôtre a du contenu, on part de là.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Une mesure chaque mois, sur Google et sur les assistants IA</h3><p>Chaque mois, une page commune ou occasion de plus, la fiche tenue (photos, horaires, actualités, réponses aux avis), Facebook et TikTok reliés, et votre position captures à l'appui sur « parc de loisirs Pont-Saint-Esprit », « anniversaire enfant Bagnols-sur-Cèze » et les autres, sur Google et sur ChatGPT et les assistants IA.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT</div><h3>Remise à niveau du site web existant</h3><ul><li>Votre site web gardé et remis à niveau, sans tout refaire</li><li>Fiche Google rouverte : horaires de saison, date de réouverture, actualités, réponses aux avis</li><li>Titres, descriptions et pages communes réécrits pour le Gard, Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène</li><li>Articles en latin, Pass 2025 et pages sans nom retirés, WordPress mis à jour</li><li>Fiche d'identité complète et llms.txt pour Google et les assistants IA</li><li>Facebook et TikTok reliés, un espace simple pour modifier vous-même textes, photos, tarifs et horaires</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « un parc de loisirs pour enfants près de Pont-Saint-Esprit » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Une seule sortie scolaire ou un seul anniversaire de groupe gagné dans l'année paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos clients viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : avec 4,7 sur Google, votre fiche est votre meilleur commercial. Rouverte et tenue tout l&#x27;hiver, elle peut aussi sortir à Pont-Saint-Esprit, Bagnols-sur-Cèze et Bollène, où vous n&#x27;apparaissez pas aujourd&#x27;hui."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Facebook et TikTok montrent vos cabanes et vos tyroliennes, mais une famille qui cherche une idée d&#x27;anniversaire près de Bagnols-sur-Cèze le tape sur Google. Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de réservations en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux réservations de groupe de plus par mois, c&#x27;est à portée : il suffit d&#x27;une fiche ouverte et d&#x27;apparaître sur « anniversaire enfant Bagnols-sur-Cèze », où vous n&#x27;apparaissez pas aujourd&#x27;hui malgré votre 4,7 sur Google."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq réservations de plus par semaine en saison, c&#x27;est réaliste avec 135 pages déjà écrites et 4,7 sur Google : il manque la fiche ouverte et les bonnes communes dans les titres."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Parc Casse Noisette : mes réponses à votre audit",SIGN="Christine\nParc Casse Noisette",SITE="parc-casse-noisette.com",DEM="Réservations";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Vos avis sont déjà au niveau et votre ambition est claire. Envoyez vos réponses, je prépare un plan chiffré occasion par occasion et commune par commune avant qu'on se parle.";
+    return "Tout est réuni : 4,7 sur Google, 135 pages et la réservation en ligne. Il ne manque qu'une fiche ouverte et un site web qui dit où vous êtes. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 6 novembre 2026 sur parc-casse-noisette.com, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>
