@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Badminton Of Sommières</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#fffdf7; --alt:#fbf3d2; --fg:#3d0c0b; --muted:#6e4b49; --brand:#c71617; --line:#efe2b4;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Lato",system-ui,sans-serif; --body:"Lato",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15100f;--alt:#1f1816;--fg:#f6efe8;--muted:#b9a9a4;--brand:#ff8c82;--line:#372b28;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1b1513;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15100f;--alt:#1f1816;--fg:#f6efe8;--muted:#b9a9a4;--brand:#ff8c82;--line:#372b28;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1b1513;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 9 novembre 2026</div>
+  <h1>Badminton Of Sommières : seul club affiché sur « badminton Sommières », absent dès Calvisson et Lunel, avec une fiche Google que personne n'a revendiquée</h1>
+  <p class="lead">Kévin, quand on cherche « badminton Sommières », « club de badminton Sommières », « badminton loisir Sommières » ou « badminton enfant Sommières » sur Google Maps, Google affiche directement votre fiche, notée 5,0 : vous êtes le seul club de la ville. Mais dès qu'on cherche à Calvisson, Lunel, Vauvert, Quissac ou Nîmes, c'est le club local qui s'affiche, et pas vous. Et cette fiche, personne ne l'a jamais revendiquée : 2 avis, pas de téléphone, pas de photo, alors que vous comptez plus d'une centaine d'adhérents. Votre site web, lui, porte le même titre sur ses dix pages, cache son adresse et son téléphone dans le code, et n'a plus publié d'actualité depuis le 13 octobre 2022.</p>
+  <div class="meta">
+    <span>Site web : <b>badmintonofsommieres.fr</b></span>
+    <span>Fait avec : <b>Activ'Cloud, outil d'un prestataire local, 10 pages réelles dont deux agendas vides</b></span>
+    <span>Fiche Google : <b>5,0 / 5 · 2 avis, non revendiquée</b></span>
+    <span>Réseaux : <b>Facebook relié au site web, pas d'Instagram</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v bad">À refaire</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>Seul club affiché sur « badminton Sommières », avec une fiche à 5,0 reliée au site web</h3><p>Relevé du 9 novembre sur Google Maps : sur « badminton Sommières », « club de badminton Sommières », « badminton loisir Sommières » et « badminton enfant Sommières », Google Maps affiche directement votre fiche, sans concurrent. Elle est notée 5,0, renvoie bien vers badmintonofsommieres.fr et affiche « ouvre à 21 h » le lundi, l'horaire exact de votre créneau adultes.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un club vivant, avec des inscriptions en ligne à jour</h3><p>Plus d'une centaine d'adhérents, trois créneaux adultes par semaine et un créneau enfants complet, un bouton d'inscription qui mène au formulaire HelloAsso de la saison 2026-2027, un bulletin 2025-2026, un compte rendu d'assemblée générale 2025 et sept partenaires locaux présentés sur une page dédiée. Il y a de quoi nourrir un vrai site web.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un site web léger, sécurisé, avec un début de fiche d'identité</h3><p>L'accueil pèse 18 Ko et ses six images de 19 à 65 Ko : il s'ouvre vite sur un téléphone. Le site web est en HTTPS, il envoie un plan du site web à Google, l'accueil a une description (« Club de badminton de Sommieres, Loisir ou compétition dans le Gard ») et le code déclare déjà un club de badminton affilié à la Fédération Française de Badminton. La page Facebook est reliée depuis chaque page.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des adhérents aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Une fiche Google que personne n'a revendiquée : 2 avis, pas de téléphone, pas de photo</h3><p>Relevé du 9 novembre : votre fiche Google affiche encore « Revendiquer cet établissement », « Ajouter le numéro de téléphone du lieu » et « Ajouter une photo ». Elle compte 2 avis pour plus d'une centaine d'adhérents, et elle vous place « 1 Passage du Sumidrium » quand votre site web écrit « 10 Passage Sumidrium ». Tant qu'elle n'est pas revendiquée, n'importe qui peut y proposer une modification, et vous ne pouvez ni répondre aux avis, ni publier vos horaires de vacances, ni annoncer un tournoi. Ce n'est pas un reproche, personne ne prévient les associations : c'est dix minutes, et ça change tout ce qu'un futur adhérent voit en premier.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « un club de badminton près de Sommières ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels créneaux, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a pas le second : <code>/llms.txt</code> répond « page introuvable », comme <code>/robots.txt</code>. La fiche d'identité existe, mais elle tient en cinq lignes : un nom, un sport, une fédération et un logo dont l'adresse répond elle aussi « page introuvable » ; ni adresse du gymnase, ni horaires, ni tarif, ni public, et sa description est vide sur neuf pages sur dix. Pour un assistant IA, vous êtes un club de badminton quelque part dans le Gard.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Dix pages qui portent toutes le même titre, et un club absent dès qu'on sort de Sommières</h3><p>Les dix pages de votre site web s'appellent « Badminton Of Sommières » dans l'onglet du navigateur, aucune n'a de titre principal (balise H1), et seul l'accueil a une description : la page Entrainements ne dit pas « horaires » à Google, la page Inscriptions ne dit pas « tarif ». Relevé du 9 novembre sur Google Maps : sur « badminton Lunel », « club de badminton Lunel », « badminton Calvisson », « badminton Vauvert », « badminton Quissac » et « club de badminton Nîmes », Google affiche directement le club local, et vous n'y êtes pas. Les villages voisins, Villevieille, Salinelles, Boisseron, Aubais, Junas ou Souvignargues, ne sont cités nulle part : Sommières est la seule commune de tout le site web.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Un téléphone et une adresse cachés dans le code, et pas de mentions légales</h3><p>Sur la page Contact, l'adresse « 201 chemin des Oliviers » et le « 06 29 45 23 95 » sont bien dans le code, mais entre balises de commentaire, datées du 3 septembre 2021 : un visiteur ne les voit pas, Google non plus, et votre fiche Google n'a pas de numéro. Le lien « mentions légales » du pied de page mène à la page Documents, qui liste vos statuts et vos attestations d'assurance : ni responsable de la publication, ni hébergeur, ni politique de confidentialité, alors que la page Contact a un formulaire. Ce n'est pas un reproche, mais c'est obligatoire, et c'est vite rédigé.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Des actualités arrêtées au 13 octobre 2022 et un agenda vide</h3><p>La page Actus s'arrête au « Tournoi Octobre rose » du 13 octobre 2022, après la « Reprise du badminton » de juin 2020 et ses consignes sanitaires ; la page Entrainements annonce « la reprise le 4 septembre » sans dire de quelle année ; les deux pages Agenda affichent un calendrier de novembre 2026 sans aucun événement, alors que vous jouez trois soirs par semaine ; le règlement du gymnase et la notice d'assurance proposés datent de 2019-2020. Un futur adhérent qui tombe là-dessus se demande si le club existe encore, et Google tire la même conclusion. Pendant ce temps, le plan du site web lui affirme que les dix pages viennent d'être modifiées, à l'heure exacte de chaque visite : il ne le croit plus.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un site web loué sur l'outil d'un prestataire, avec deux adresses</h3><p>Le pied de page indique que le site web est conçu et hébergé par Activ'Cloud, l'un de vos partenaires, sur son propre outil : il ne se déménage pas, et ses réglages de référencement sont ceux de l'outil, pas les vôtres. <code>badmintonofsommieres.fr</code> et <code>www.badmintonofsommieres.fr</code> répondent tous les deux sans redirection, et le code désigne la version www comme adresse principale alors que tous vos liens, votre plan du site web et votre fiche Google utilisent la version sans www : pour Google, deux sites web identiques. Il n'y a pas d'image de partage non plus : un lien du site web collé dans le groupe WhatsApp du club s'affiche sans photo.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Un nouveau site web sur mesure, qui vous appartient</h3><p>Une page par public (adultes loisir, enfants, compétition et interclubs), une page horaires et lieu avec le plan du gymnase, une page inscriptions avec le tarif et le bouton HelloAsso, vos partenaires, vos actualités, de vraies mentions légales, une fiche d'identité complète et un <code>llms.txt</code> pour Google et les assistants IA. Une seule adresse, une image de partage, rapide sur téléphone, et vous publiez vous-même une actualité ou une photo de tournoi en deux minutes. Le nom de domaine reste le vôtre.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Une fiche Google revendiquée, complète et reliée</h3><p>Je revendique la fiche avec vous, j'y mets le téléphone, l'adresse exacte du gymnase, les trois créneaux, des photos, la bonne catégorie et le lien vers la bonne page du site web, puis j'organise la collecte d'avis auprès de vos adhérents : passer de 2 à 30 avis, c'est ce qui fait la différence quand un parent compare.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Des pages pour les villages autour, et une mesure chaque mois</h3><p>Villevieille, Salinelles, Boisseron, Aubais, Junas, Calvisson, Lunel : une page par commune, écrite à partir de ce que vivent vraiment vos adhérents, pour que le seul club de Sommières sorte aussi quand on cherche depuis le village d'à côté. Et chaque mois, je vous montre où vous en êtes, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT<span class="was">1 490 €</span></div><h3>Nouveau site web sur mesure</h3><ul><li>Site web sur mesure, à vous, pas loué</li><li>Une page par public et par créneau, le tarif, le bouton d'inscription, vos partenaires</li><li>Nom de domaine conservé, mentions légales et politique de confidentialité rédigées</li><li>Fiche Google revendiquée, remise d'aplomb et reliée au site web, page Facebook reliée</li><li>Un espace simple pour publier vous-même une actualité, une photo, un horaire</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « un club de badminton près de Sommières » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Une seule rentrée de septembre gagnée sur les villages autour de Sommières paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos adhérents viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : sur « badminton Sommières », Google affiche directement votre fiche. Avec un téléphone, des photos et plus de 2 avis, elle ferait le même travail depuis Villevieille, Calvisson ou Lunel."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Votre page Facebook garde le lien avec les adhérents, mais un parent qui cherche un club tape « badminton Sommières » sur Google. Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de inscriptions en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux inscriptions de plus par mois, c&#x27;est à portée avec une fiche Google revendiquée et une page par créneau qui dit enfin « horaires » et « tarif » à Google."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq par mois à la rentrée, c&#x27;est réaliste pour le seul club de la ville, avec une page par village voisin et vos adhérents qui laissent un avis."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Badminton Of Sommières : mes réponses à votre audit",SIGN="Kévin\nBadminton Of Sommières",SITE="badmintonofsommieres.fr",DEM="Inscriptions";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Vos cent adhérents sont déjà là et votre ambition est claire. Envoyez vos réponses, je prépare un plan chiffré créneau par créneau avant qu'on se parle.";
+    return "Tout est réuni : le seul club de badminton de Sommières, une note de 5,0 et plus d'une centaine d'adhérents. Il ne manque qu'une fiche Google revendiquée et un site web qui vous appartient et qui le dise à Google. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 9 novembre 2026 sur badmintonofsommieres.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>

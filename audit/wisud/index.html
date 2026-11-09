@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Wisud</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#f7f6f2; --alt:#ece7dd; --fg:#2f2e2d; --muted:#5e5b57; --brand:#467557; --line:#d9d0c3;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Raleway",system-ui,sans-serif; --body:"Raleway",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161817;--alt:#1e221f;--fg:#f1efe9;--muted:#aeb3ad;--brand:#9ccfae;--line:#2d332f;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1a1e1b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161817;--alt:#1e221f;--fg:#f1efe9;--muted:#aeb3ad;--brand:#9ccfae;--line:#2d332f;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#1a1e1b;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 9 novembre 2026</div>
+  <h1>Wisud : 1er sur « transport de personnes Montpellier », absent sur « transfert aéroport Montpellier » et « chauffeur privé Montpellier »</h1>
+  <p class="lead">David, quand on cherche « transport de personnes Montpellier » sur Google Maps, c'est vous qui sortez en premier, devant Max Transports, Votre Chauffeur ABC et DCS VTC, avec un 5,0 ; 2e à Juvignac, 5e sur « transport de groupe Montpellier ». Mais sur les recherches qui remplissent un van, « transfert aéroport Montpellier », « chauffeur privé Montpellier », « van avec chauffeur Montpellier » et « navette aéroport Juvignac », vous n'apparaissez pas ; à Lattes, Castelnau-le-Lez et Saint-Georges-d'Orques non plus. Votre site web est à vous, sur mesure, avec de vraies mentions légales ; mais tout le transport tient en une page de 160 mots en français, sans Juvignac, sans tarif, sans téléphone, avec une photo de 3,2 Mo, et votre fiche Google ne repose que sur un seul avis.</p>
+  <div class="meta">
+    <span>Site web : <b>wisud.com</b></span>
+    <span>Fait avec : <b>sur mesure (HTML, jQuery), 7 pages en français, 1 page Transport</b></span>
+    <span>Fiche Google : <b>5,0 / 5 · 1 avis</b></span>
+    <span>Réseaux : <b>Facebook, Instagram, TikTok et YouTube reliés depuis le site web (comptes de l'agence Wisud Évasion)</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v warn">À corriger</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>1er sur « transport de personnes Montpellier », 2e à Juvignac</h3><p>Relevé du 9 novembre sur Google Maps : 1er sur 20 sur « transport de personnes Montpellier », devant Max Transports, Votre Chauffeur ABC, DCS VTC et Direct Taxi Montpellier ; 2e sur 3 sur « transport de personnes Juvignac » ; 5e sur 20 sur « transport de groupe Montpellier », derrière des autocaristes. Votre fiche renvoie bien vers la page Transport du site web et affiche le même numéro que la page Contact, le 06 07 33 00 18.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un site web sur mesure, qui vous appartient, avec de vraies mentions légales</h3><p>Pas de Wix ni de WordPress : des pages HTML à vous, hébergées chez OVH, en français et en anglais. Le titre de la page Transport dit bien « Transport de personnes Montpellier et alentours », sa description pour Google est écrite (8 passagers, bagages, van haut de gamme), une seule adresse répond (<code>wisud.com</code> et <code>http</code> redirigent vers <code>www</code>), et la page À propos contient des mentions légales complètes : société, RCS Montpellier 837 954 650, immatriculation Atout France IM034180003, garantie APST, hébergeur.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Une agence qui a déjà du contenu et des réseaux</h3><p>46 offres d'évasions, une page Team building de 614 mots, un blog, et quatre réseaux reliés depuis le pied de page : Facebook, Instagram, TikTok et YouTube. Pour le transport, tout ce matériel (destinations, groupes, séminaires) est une réserve de pages prêtes à écrire.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des clients aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Absent sur « transfert aéroport Montpellier », « chauffeur privé Montpellier » et « van avec chauffeur Montpellier »</h3><p>Relevé du 9 novembre sur Google Maps : absent des 12 résultats de « transfert aéroport Montpellier » (Navette Aéroport Montpellier Méditerranée, Allo VTC Montpellier, Montpellier Transfert VIP et Van VTC Montpellier prennent la place), absent des 20 de « navette aéroport Juvignac », absent des 21 de « chauffeur privé Montpellier » et des 21 de « van avec chauffeur Montpellier » (Votre Chauffeur ABC, DCS VTC, One VTC Prestige, QS Drive), absent des 12 de « transport PMR Montpellier » ; 14e sur 20 sur « minibus avec chauffeur Montpellier », 12e sur 21 sur « chauffeur privé Juvignac ». Et sur « transport de personnes » à Lattes (20 résultats), Castelnau-le-Lez (12) et Saint-Georges-d'Orques (18), votre commune voisine, vous n'y êtes pas. Vous êtes 1er quand on tape exactement le nom de votre fiche ; dès qu'un client tape ce qu'il cherche vraiment, un transfert vers l'aéroport ou un van pour huit, il ne vous voit pas : votre site web n'a aucune page pour ces services ni pour ces communes.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « un van avec chauffeur pour l'aéroport de Montpellier ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quels services, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a ni l'un ni l'autre : <code>/llms.txt</code> répond « page introuvable », le code de la page Transport ne contient aucune fiche d'identité (ni adresse, ni zone desservie, ni services, ni avis), et il n'existe pas de plan du site web (<code>/sitemap.xml</code> en 404) pour dire aux moteurs quelles pages lire. Pour un assistant IA, Wisud est une agence d'excursions dont on ne sait pas qu'elle transporte.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Une seule page de 160 mots pour sept services, sans Juvignac, sans tarif, sans téléphone</h3><p>Toute l'activité transport tient sur <code>/fr/transports.html</code> : environ 160 mots en français (274 en comptant l'anglais mêlé dans la même page) pour sept services annoncés (navette, gare et aéroport, transport professionnel, excursions privées, circuits, événementiel, loisirs). Le mot « Juvignac » n'y apparaît pas, « aéroport » une seule fois, « Lattes », « Castelnau » et « tarif » jamais ; ni numéro de téléphone, ni adresse, ni horaires sur la page : le bouton « Réserver un trajet » renvoie vers le formulaire de contact. Google classe des pages, et il n'en voit qu'une, qui dit peu.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Une fiche Google qui tient sur un seul avis, et deux adresses</h3><p>Votre fiche « Transport de personnes Montpellier - WISUD » affiche 5,0 avec un seul avis, une seule photo (le van) et la catégorie générique « Service de transport » : rien n'y dit navette, aéroport, chauffeur privé ni van 8 places. Votre première place sur « transport de personnes Montpellier » repose donc sur un seul client ; Max Transports, juste derrière, en a 261. Par ailleurs la fiche vous situe « 147 allée de l'Europe, centre commercial Les Portes du Soleil, 34990 Juvignac », alors que la seule adresse du site web, dans les mentions légales, est « 6 impasse le hameau de la colline, 34990 Juvignac », et qu'une seconde fiche « WISUD - Excursions et visites - Montpellier » existe à 300 m : les avis se partagent entre deux fiches au lieu de se cumuler.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Une photo de 3,2 Mo et aucune image chargée à la demande</h3><p>La photo du van sur la page Transport, <code>transport1.jpeg</code>, pèse 3 192 449 octets, soit 3,2 Mo, et aucune des 24 images de la page n'est chargée à la demande (<code>lazy loading</code>). Sur un téléphone en 4G, c'est plusieurs secondes avant de voir le van, et Google mesure ce temps. La même photo correctement compressée pèserait moins de 200 Ko.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Des restes de chantier visibles par Google</h3><p>Le titre de la page Offres se termine par « toto » (<code>Offres WISUD - Séjours | activités | excursions | événements toto</code>), un mot de test oublié qui s'affiche tel quel dans Google. La page Transport propose un bouton de partage Google+ (service fermé en 2019) et Pinterest, le menu affiche « Veuillez patientez », les mentions légales disent « 2018 WISUD » quand le pied de page dit « 2024 », et le texte anglais est écrit dans le même code que le français (« Nos évasions Our evasions Nostros fugas »), ce que Google lit mélangé. Ce n'est pas un reproche, personne ne relit son code, mais c'est ce que voient Google et un client attentif.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Une remise à niveau du site web, sans le refaire</h3><p>Votre site web sur mesure se garde : une fiche d'identité complète dans le code (nom, adresse, zone desservie, services, avis) et un <code>llms.txt</code> pour Google et les assistants IA, un plan du site web, la photo du van compressée, Juvignac, le téléphone, l'adresse et les horaires sur la page Transport, le texte anglais séparé du français, et les restes de chantier (« toto », Google+, « patientez ») nettoyés.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Des pages qui répondent aux recherches</h3><p>Transfert aéroport Montpellier Méditerranée, gare Saint-Roch et Sud de France, van avec chauffeur pour les groupes, séminaires et mariages, transport PMR si vous l'assurez, et une page pour Juvignac, Montpellier, Lattes, Castelnau-le-Lez et Saint-Georges-d'Orques : une page par service et par commune, avec un tarif indicatif, écrites à partir de vos trajets réels (Montpellier-Alès, le chemin de Stevenson), pour sortir là où un client tape ce qu'il cherche.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Une fiche Google reliée et tenue</h3><p>Je mets la fiche et le site web à la même adresse, j'ajoute les catégories qui manquent (navette, chauffeur privé, transport de groupe), des photos, une demande d'avis simple à envoyer après chaque trajet pour passer de 1 à 30 avis dans l'année, je réponds aux avis, et je vous montre chaque mois où vous en êtes, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT</div><h3>Remise à niveau du site web existant</h3><ul><li>Votre site web gardé et remis à niveau, sans tout refaire</li><li>Fiche d'identité, llms.txt et plan du site web pour Google et les assistants IA</li><li>Une page par service et par commune, rédigées, avec Juvignac, téléphone et tarifs</li><li>Photo du van compressée, restes de chantier nettoyés, anglais séparé du français</li><li>Fiche Google remise d'aplomb (adresse, catégories, photos, avis) et reliée au site web</li><li>Un espace simple pour modifier vous-même textes, photos, tarifs et horaires</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « un van avec chauffeur pour l'aéroport de Montpellier » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Un seul séminaire ou un seul mariage transporté dans l'année paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos clients viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : vous êtes 1er sur « transport de personnes Montpellier ». La même mécanique peut jouer sur « transfert aéroport Montpellier » et « van avec chauffeur », il lui manque juste les pages et les avis."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Instagram et TikTok montrent vos évasions, mais personne n&#x27;y tape « navette aéroport Juvignac » : c&#x27;est sur Google qu&#x27;on réserve un van. Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de demandes de devis en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux demandes de devis de plus par mois, c&#x27;est à portée : il suffit d&#x27;apparaître sur « transfert aéroport Montpellier » et « van avec chauffeur Montpellier », où vous êtes absent aujourd&#x27;hui avec un 5,0."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq demandes de plus par mois, c&#x27;est réaliste quand on est déjà 1er sur « transport de personnes Montpellier » : il manque une page par service, une page par commune et des avis."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Wisud : mes réponses à votre audit",SIGN="David\nWisud",SITE="wisud.com",DEM="Demandes de devis";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Votre 5,0 et votre première place à Montpellier sont déjà là et votre ambition est claire. Envoyez vos réponses, je prépare un plan chiffré service par service avant qu'on se parle.";
+    return "Tout est réuni : la première place sur « transport de personnes Montpellier », un site web qui vous appartient et une agence qui a déjà du contenu. Il ne manque que les pages, les avis et la fiche d'identité qui font sortir Wisud sur l'aéroport et les communes voisines. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 9 novembre 2026 sur wisud.com, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>

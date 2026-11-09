@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Audit Formation Taxi Moto</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Cabin:wght@400;600;700&display=swap">
+<style>
+/* Layout: one column, 720px, section bands in the client's own colors. Reads top to bottom like a short report. */
+:root{
+  --bg:#f7f9fb; --alt:#e9eff5; --fg:#1f2933; --muted:#5b6670; --brand:#004c7e; --line:#d4dde6;
+  --ok:#2f6b2f; --warn:#9a6a00; --bad:#9c2f1f; --card:#ffffff;
+  --display:"Libre Baskerville",Georgia,serif; --body:"Cabin",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e151c;--alt:#162029;--fg:#edf2f7;--muted:#a5b1bd;--brand:#5fb0e6;--line:#26333f;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#131c25;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e151c;--alt:#162029;--fg:#edf2f7;--muted:#a5b1bd;--brand:#5fb0e6;--line:#26333f;--ok:#8fcf8f;--warn:#e6b84a;--bad:#f08a78;--card:#131c25;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 56px}
+.band{background:var(--alt)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;color:var(--brand);margin-top:8px}
+h2{font-size:22px;font-weight:800;margin-bottom:16px}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+.lead{font-size:18px;color:var(--fg);margin-top:16px;max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:28px}
+.tile{background:var(--card);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.tile .v{font-size:26px;font-weight:800;line-height:1.1}
+.tile .l{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+section{padding-block:40px}
+.list{display:grid;gap:14px}
+.item{display:grid;grid-template-columns:10px 1fr;gap:14px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.bad{background:var(--bad)}
+.item p{color:var(--muted);margin-top:4px;font-size:15px}
+.item code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.steps{display:grid;gap:18px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.step .n{font-weight:800;color:var(--brand);font-size:14px;letter-spacing:.06em}
+.step p{color:var(--muted);font-size:15px;margin-top:4px}
+.offer{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:4px}
+.plan{background:var(--card);border:1px solid var(--line);padding:18px;min-width:0}
+.plan .price{font-size:24px;font-weight:800;color:var(--brand);margin-top:6px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:13px;color:var(--muted);font-weight:500}
+.plan .was{font-size:14px;color:var(--muted);text-decoration:line-through;margin-left:6px;font-weight:500}
+.plan ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+.guarantee{margin-top:14px;padding:12px 14px;background:var(--alt);border-left:3px solid var(--brand);font-size:14px;color:var(--fg)}
+.plan li{margin-bottom:4px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.btn{background:var(--brand);color:var(--bg);text-decoration:none;font-weight:600;padding:12px 18px;display:inline-block}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--warn);outline-offset:3px}
+.tel{font-weight:600;color:var(--fg)}
+footer{font-size:13px;color:var(--muted);padding-block:24px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.plan{transition:transform .2s}.plan:hover{transform:translateY(-2px)}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <div class="eyebrow">Audit de visibilité · 9 novembre 2026</div>
+  <h1>Formation Taxi Moto : 2e sur « formation taxi moto Montpellier », absent sur « formation VTC » à Montpellier, Pérols et Lattes</h1>
+  <p class="lead">Patrick, quand un candidat cherche « formation taxi moto Montpellier » sur Google Maps, vous sortez 2e sur 8, juste derrière ECAF, et 5e sur « formation taxi moto Nîmes » : votre nom fait le travail à lui seul, sans un seul avis. Mais sur « formation VTC Montpellier », « formation VTC Pérols », « formation chauffeur VTC Montpellier » et « formation VTC Lattes », vous n'êtes dans aucun résultat : ECAF, Center Formation et Prepa VTC prennent toute la place. Votre fiche Google est classée « Siège social », sans téléphone, sans horaires, sans avis, et personne ne l'a revendiquée ; votre site web, fait avec l'éditeur IONOS, s'intitule « Page d'Accueil » et affiche encore, en novembre 2026, le calendrier des sessions 2024.</p>
+  <div class="meta">
+    <span>Site web : <b>formationtaximoto.fr</b></span>
+    <span>Fait avec : <b>IONOS MyWebsite, 17 pages, aucune description</b></span>
+    <span>Fiche Google : <b>aucun avis · fiche « Siège social » non revendiquée</b></span>
+    <span>Réseaux : <b>aucun réseau relié au site web</b></span>
+  </div>
+  <div class="score">
+    <div class="tile"><div class="v bad">À refaire</div><div class="l">Site web</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">Référencement local</div></div>
+    <div class="tile"><div class="v bad">En sommeil</div><div class="l">Fiche Google et avis</div></div>
+    <div class="tile"><div class="v bad">Faible</div><div class="l">ChatGPT et assistants IA</div></div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce qui est déjà bien</h2>
+  <div class="list">
+    <div class="item"><span class="dot ok"></span><div><h3>2e sur « formation taxi moto Montpellier », 5e à Nîmes, sans un seul avis</h3><p>Relevé du 9 novembre sur Google Maps : 2e sur 8 sur « formation taxi moto Montpellier », derrière ECAF et devant Center Formation, AFTRAL et Promotrans ; 5e sur 7 sur « formation taxi moto Nîmes ». Vous y arrivez avec une fiche vide, sans avis ni téléphone : c'est le nom « Formation Taxi Moto » et votre agrément de centre N°19-007 qui portent. Avec une fiche tenue, la même mécanique vous met 1er.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Des programmes et des tarifs écrits noir sur blanc</h3><p>La page Formation Initiale détaille le programme en 3 041 mots (tronc commun Taxi, VTC, VMDTR, 70 heures d'admissibilité, 35 heures d'admission), les tarifs sont affichés en clair (1 600 € HT la théorie, 2 250 € HT théorie et pratique, 250 € TTC la formation continue), l'équipe est nommée (Laurent Santucci, Vanessa Cucurullo, Thierry Sanchez, Agnès Barthez, référente handicap). Peu de centres en disent autant : la matière est là, il manque la manière de la montrer à Google.</p></div></div>
+    <div class="item"><span class="dot ok"></span><div><h3>Un cadre légal complet</h3><p>Mentions légales (Securider SAS, RCS Montpellier 848 323 598, responsable de publication), politique de protection des données et politique de cookies sont en ligne, et le site web est bien en https. C'est obligatoire dès qu'il y a un formulaire de contact, et c'est fait.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Ce qui vous fait perdre des stagiaires aujourd'hui</h2>
+  <div class="list">
+    <div class="item"><span class="dot bad"></span><div><h3>Une fiche Google « Siège social », sans téléphone ni horaires, que personne ne tient</h3><p>Votre fiche Google « Formation Taxi Moto » est classée « Siège social » au 270 impasse Adam Smith à Pérols : Google y propose « Ajouter le numéro de téléphone du lieu », « Ajouter des horaires », « Ajouter des photos » et surtout « Revendiquer cet établissement ». Personne chez vous n'en a la main, elle n'a aucun avis, et le 04 67 72 74 68 de votre site web n'y figure pas. Pendant ce temps, votre site web indique comme lieu de stage le 28 rue de Lyon à Paris 12e : un candidat de Montpellier qui clique sur « Itinéraires » arrive devant un siège social, sans savoir où ni quand il sera formé. Google compare la fiche et le site web ; ici, ils ne racontent pas la même chose.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Invisible pour ChatGPT et les assistants IA</h3><p>Aujourd'hui, de plus en plus de gens ne tapent plus leur recherche sur Google : ils demandent directement à ChatGPT ou à un autre assistant IA « une formation taxi moto près de Montpellier ». Pour recommander quelqu'un, ces assistants lisent les sites web et cherchent deux choses : une fiche d'identité cachée dans le code (qui vous êtes, où, quelles formations, quels tarifs, vos avis) et un petit fichier de présentation pensé pour eux, le <code>llms.txt</code>, le nouveau standard de ce référencement. Votre site web n'a ni l'un ni l'autre : <code>/llms.txt</code> renvoie vers la page d'accueil de securider.fr, et le code ne contient aucune fiche d'identité, pas même un nom. Aucune des 17 pages n'a de description pour Google (balise <code>meta description</code> absente partout), l'onglet de l'accueil s'appelle « Page d'Accueil » et trois pages s'appellent « about ». Pour un assistant IA, Formation Taxi Moto est une page sans nom, sans adresse et sans formation.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Absent sur « formation VTC » et « formation taxi » à Montpellier, Pérols et Lattes</h3><p>Relevé du 9 novembre sur Google Maps : absent des 10 résultats de « formation VTC Pérols », des 7 de « formation VTC Montpellier », des 7 de « formation chauffeur VTC Montpellier », des 7 de « centre de formation VTC Montpellier », des 6 de « formation VTC Lattes » et des 5 de « formation taxi Montpellier ». Ce sont ECAF, Center Formation, Prepa VTC et Formation VTC Occitanie qui sortent à chaque fois. Sur votre site web, Montpellier n'apparaît que dans le numéro RCS des mentions légales, Pérols que dans le pied de page, et Lattes, Mauguio et Nîmes jamais ; « VTC » n'y est écrit que dans le détail du tronc commun. Les candidats qui tapent « VTC » ou « taxi » ne vous trouvent pas, alors que votre tronc commun est le même.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Un calendrier 2024 toujours affiché en novembre 2026</h3><p>Votre accueil et votre page Formations affichent « Calendrier des sessions de formation en 2024 » : « Mercredi 27 et jeudi 28 mars - COMPLET », « Lundi 17 et mardi 18 juin - RESTE 2 PLACES », « 18 et 19 septembre », « 12 et 13 décembre ». Pour un chauffeur qui doit faire sa formation continue tous les 5 ans et qui lit ça aujourd'hui, le centre a l'air fermé depuis deux ans. Ce n'est pas un reproche, personne n'a le temps de retoucher un site web entre deux sessions ; c'est exactement ce qu'un espace de modification simple, ou une modification par mois faite pour vous, règle en deux minutes.</p></div></div>
+    <div class="item"><span class="dot bad"></span><div><h3>Un site web IONOS qui porte encore ses réglages d'usine</h3><p>Le site web est fait avec l'éditeur IONOS MyWebsite, dont le badge « Crée avec » s'affiche dans votre pied de page. Trois pages ont gardé leur adresse de modèle : <code>/newpage</code> (Téléchargement), <code>/newpageae885f43</code> (Formation Théorique) et <code>/newpagebb5e7ea6</code> (Politique de protection des données). <code>formationtaximoto.fr</code> et <code>www.formationtaximoto.fr</code> répondent tous les deux sans se rediriger, et les pages se partagent entre les deux adresses. Il n'y a pas de plan du site web pour Google : <code>/sitemap.xml</code>, <code>/robots.txt</code> et toute adresse inexistante renvoient vers l'accueil de securider.fr au lieu d'une page « introuvable ». Je vous le dis franchement : on ne référence pas durablement un site web sur ce type d'éditeur, on le remplace.</p></div></div>
+    <div class="item"><span class="dot warn"></span><div><h3>Un accueil de 13 images en pleine largeur et un lien sans image quand on le partage</h3><p>L'accueil charge 13 images en 1 920 pixels de large, dont les cinq premières pèsent de 267 à 338 Ko chacune et le logo 100 Ko : sur un téléphone en 4G, le premier écran arrive tard. Et le code n'a pas d'image de partage (balise <code>og:image</code>) : quand un chauffeur colle votre lien dans un groupe WhatsApp de taxis-motos, l'aperçu s'affiche sans photo.</p></div></div>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0">
+  <h2>Ce que je ferais, dans l'ordre</h2>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div><h3>Un nouveau site web sur mesure, qui vous appartient</h3><p>Une page par formation (initiale, théorique, continue, équivalence) avec le programme, le tarif et le calendrier à jour, le lieu de formation dit clairement, Pérols, Montpellier, Lattes et Nîmes dans les titres, un titre et une description par page, une fiche d'identité complète dans le code et un <code>llms.txt</code> pour Google et les assistants IA, une seule adresse web, un plan du site web envoyé à Google, des images allégées, et un espace simple pour changer vous-même les dates de session et les places restantes.</p></div></div>
+    <div class="step"><span class="n">2</span><div><h3>Une fiche Google reprise en main</h3><p>Revendiquer la fiche, la passer de « Siège social » à « Centre de formation », y mettre le 04 67 72 74 68, les horaires, des photos de formation, le lien vers la bonne page, et demander leur avis aux stagiaires formés : les cinq premiers avis changent tout pour un candidat qui compare.</p></div></div>
+    <div class="step"><span class="n">3</span><div><h3>Des pages qui répondent aux recherches des candidats</h3><p>« Formation VTC Montpellier », « formation taxi Montpellier », « formation taxi moto Nîmes », « formation continue VMDTR », « équivalence taxi VTC vers taxi-moto », financement : une page par recherche, écrite à partir de vos programmes, puis la fiche tenue chaque mois et votre position captures à l'appui, sur Google et sur ChatGPT.</p></div></div>
+  </div>
+</section></div></div>
+
+<div class="wrap"><section>
+  <h2>Les tarifs, hors taxes</h2>
+  <div class="offer">
+    <div class="plan"><div class="eyebrow">Une fois</div><div class="price">490 € HT<span class="was">1 490 €</span></div><h3>Nouveau site web sur mesure</h3><ul><li>Un site web sur mesure qui vous appartient : nom de domaine, fichiers et accès à votre nom</li><li>Une page par formation avec programme, tarif, lieu et calendrier à jour, rédigées</li><li>Titres, descriptions, fiche d'identité et llms.txt pour Google et les assistants IA</li><li>Fiche Google revendiquée, catégorie, téléphone, horaires et photos remis d'aplomb et reliés</li><li>Une seule adresse web, un plan du site web envoyé à Google, des images allégées</li><li>Un espace simple pour modifier vous-même dates de session, places restantes et tarifs</li><li>Livré en quinze jours, validation à chaque étape</li></ul></div>
+    <div class="plan"><div class="eyebrow">Chaque mois</div><div class="price">179 € HT <small>/ mois</small></div><h3>Recommandé</h3><ul><li>Hébergement, nom de domaine, sauvegardes, sécurité et mises à jour techniques faites pour vous</li><li>Un contact direct : moi, pas un ticket. Une modification par mois faite pour vous</li><li>Une nouvelle page commune ou prestation chaque mois</li><li>Fiche Google tenue à jour, réponses aux avis</li><li>Votre position chaque mois, captures à l'appui : sur Google, et aussi sur ChatGPT et les assistants IA, parce qu'aujourd'hui on leur demande « une formation taxi moto près de Montpellier » comme on le tapait sur Google</li></ul><div class="guarantee"><b>Engagement 12 mois, garantie 90 jours.</b> Au bout de trois mois, je vous montre la mesure ; si rien n'a bougé, vous arrêtez là, sans rien devoir pour la suite. Et le site web vous appartient : si vous partez, vous partez avec.</div></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted);font-size:15px">Et plus tard, quand tout ça tourne, la formule <b style="color:var(--fg)">Partout, 380 € HT par mois</b>. Ce n'est pas un supplément : elle remplace Recommandé. Vous passez de 179 € à 380 € par mois, pas 179 + 380. Elle garde tout ce que Recommandé contient et y ajoute vos réseaux : Instagram et Facebook remis à niveau, puis vos publications écrites à partir de vos photos du quotidien, validées par vous en un clic sur votre téléphone et publiées sur Instagram, Facebook et la fiche Google en même temps, pour construire votre image et faire grandir l'entreprise. On n'en parle que quand le site web et Google font déjà leur travail.</p>
+  <p style="margin-top:14px;color:var(--fg);font-size:15px">Un seul stagiaire en formation initiale gagné chaque trimestre paie tout ça plusieurs fois.</p>
+  <div class="cta">
+    <a class="btn" href="https://tidycal.com/ultrafacile/revue-audit">Réserver la revue de mon audit (20 min)</a>
+    <span class="tel">06 46 56 17 87</span>
+  </div>
+</section></div>
+
+<div class="band"><div class="wrap"><section style="padding-block:0" id="questions">
+  <div class="eyebrow">Trois minutes, cinq questions</div>
+  <h2 style="margin-top:8px">Avant même de m'appeler, répondez à ça</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted);margin-top:0;margin-bottom:24px">Ce sont les cinq questions que je pose à chaque première rencontre. Vos réponses me disent par où commencer, et vous disent si ça vaut la peine de me parler. Même « je ne sais pas » est une réponse utile. À la fin, votre mail de réponse est prêt, vous n'avez qu'à l'envoyer.</p>
+  <form id="quiz" class="quiz" autocomplete="off">
+    <fieldset>
+      <legend>1. Qui a fait votre site web actuel ?</legend>
+      <label><input type="radio" name="q1" value="moi" data-echo="Vous avez donc la main. C&#x27;est le cas le plus simple : on peut commencer la semaine prochaine."> Moi-même</label>
+      <label><input type="radio" name="q1" value="proche" data-echo="Un proche qui a bien travaillé. Je lui laisse le mérite et je prends la suite sans rien casser."> Un proche, un ami</label>
+      <label><input type="radio" name="q1" value="presta" data-echo="Dans ce cas la première chose à vérifier, c&#x27;est ce que vous possédez vraiment : le nom de domaine, les fichiers, les accès."> Un prestataire, une agence</label>
+      <label><input type="radio" name="q1" value="nsp" data-echo="C&#x27;est plus courant que vous ne le pensez. Je retrouve ça en dix minutes avec vous, c&#x27;est compris dans le premier appel."> Je ne sais plus vraiment</label>
+    </fieldset>
+    <fieldset>
+      <legend>2. Avez-vous les accès ? Identifiants de l'hébergement, du nom de domaine, de l'administration du site web.</legend>
+      <label><input type="radio" name="q2" value="oui" data-echo="Parfait. Avec les accès, on peut démarrer tout de suite."> Oui, je les ai quelque part</label>
+      <label><input type="radio" name="q2" value="partiel" data-echo="C&#x27;est le point à régler en premier, avant tout le reste. Sans ça, personne ne peut travailler sur votre site web, pas même vous."> Certains, pas tous</label>
+      <label><input type="radio" name="q2" value="non" data-echo="Alors aujourd&#x27;hui votre site web ne vous appartient pas vraiment. On commence par récupérer ce qui est à vous, c&#x27;est ma première mission."> Non</label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Êtes-vous encore engagé avec quelqu'un pour ce site web ? Abonnement, contrat de maintenance, hébergement payé à un tiers.</legend>
+      <label><input type="radio" name="q3" value="non" data-echo="Vous êtes libre. Rien ne retient le démarrage."> Non, rien</label>
+      <label><input type="radio" name="q3" value="oui" data-echo="Pas un problème, mais à regarder ensemble : ce que vous payez, pour quoi, et jusqu&#x27;à quand. Souvent on paie pour des choses qui ne servent plus."> Oui, je paie encore quelque chose</label>
+      <label><input type="radio" name="q3" value="nsp" data-echo="Un coup d&#x27;œil à vos prélèvements suffit. Je vous dis quoi chercher lors de l&#x27;appel."> Je ne sais pas</label>
+    </fieldset>
+    <fieldset>
+      <legend>4. Aujourd'hui, vos stagiaires viennent surtout de…</legend>
+      <label><input type="radio" name="q4" value="bao" data-echo="Le bouche-à-oreille est votre force, et il a un plafond : il ne vous amène que les voisins de vos clients. Google amène ceux qui ne vous connaissent pas encore."> Du bouche-à-oreille</label>
+      <label><input type="radio" name="q4" value="google" data-echo="Logique : vous êtes 2e sur « formation taxi moto Montpellier » avec une fiche vide. La même mécanique peut jouer sur « formation VTC Montpellier » et « formation taxi Montpellier », il lui manque les pages et une fiche tenue."> De Google, de la fiche et des avis</label>
+      <label><input type="radio" name="q4" value="insta" data-echo="Les réseaux parlent aux chauffeurs déjà en activité, mais un candidat qui cherche une formation taxi moto le tape sur Google, et il tombe sur une fiche « Siège social » sans téléphone. Les deux ensemble, c&#x27;est là que ça décolle."> Des réseaux sociaux</label>
+      <label><input type="radio" name="q4" value="nsp" data-echo="Vous le saurez précisément d&#x27;ici trois mois : c&#x27;est l&#x27;une des premières choses que je mets en place."> Je ne sais pas trop</label>
+    </fieldset>
+    <fieldset>
+      <legend>5. Combien de inscriptions en plus par mois changeraient votre année ?</legend>
+      <label><input type="radio" name="q5" value="2" data-echo="Deux inscriptions de plus par mois, c&#x27;est à portée : une fiche Google avec téléphone et avis, et une page « formation VTC Montpellier » là où vous êtes absent aujourd&#x27;hui."> Deux ou trois</label>
+      <label><input type="radio" name="q5" value="5" data-echo="Cinq inscriptions de plus par mois, c&#x27;est réaliste à six mois quand on est déjà 2e sur « formation taxi moto Montpellier » sans avis : il manque une page par recherche et un calendrier à jour."> Cinq</label>
+      <label><input type="radio" name="q5" value="10" data-echo="Dix, ça veut dire recruter. On en parle sérieusement, avec un plan en deux temps."> Dix et plus</label>
+    </fieldset>
+  </form>
+  <div id="echo" class="echo" hidden></div>
+  <div id="verdict" class="verdict" hidden>
+    <h3>Vous êtes à un mail de la réponse</h3>
+    <p id="verdict-text"></p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn" id="mail-btn" href="#">Envoyer mes réponses à Sabine</a>
+      <button type="button" class="btn ghost" id="copy-btn">Copier le mail</button>
+      <a class="btn ghost" href="https://tidycal.com/ultrafacile/revue-audit">Ou réserver la revue de mon audit (20 min)</a>
+    </div>
+    <pre id="mail-preview" class="preview" aria-live="polite"></pre>
+  </div>
+</section></div></div>
+
+<style>
+.quiz{display:grid;gap:22px}
+.quiz fieldset{border:0;padding:0;margin:0;display:grid;gap:8px;min-width:0}
+.quiz legend{font-weight:600;margin-bottom:6px;text-wrap:balance}
+.quiz label{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-size:15px}
+.quiz label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.quiz input{margin-top:3px;accent-color:var(--brand)}
+.echo{margin-top:18px;padding:14px 16px;border-left:3px solid var(--brand);background:var(--card);font-size:15px}
+.verdict{margin-top:24px;padding:20px;background:var(--card);border:1px solid var(--line)}
+.verdict p{color:var(--muted);margin-top:8px}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);font:inherit;font-weight:600;cursor:pointer;padding:11px 18px}
+.preview{margin:16px 0 0;white-space:pre-wrap;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);background:var(--alt);padding:12px;max-width:100%;overflow-x:auto}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('quiz'),echo=document.getElementById('echo'),verdict=document.getElementById('verdict');
+  var mailBtn=document.getElementById('mail-btn'),copyBtn=document.getElementById('copy-btn'),preview=document.getElementById('mail-preview'),vt=document.getElementById('verdict-text');
+  var TO='sabine@ultrafacile.fr',SUBJECT="Formation Taxi Moto : mes réponses à votre audit",SIGN="Patrick\nFormation Taxi Moto",SITE="formationtaximoto.fr",DEM="Inscriptions";
+  function val(q){var el=form.querySelector('input[name='+q+']:checked');return el?el.value:'';}
+  function answers(){var o={};['q1','q2','q3','q4','q5'].forEach(function(q){var el=form.querySelector('input[name='+q+']:checked');o[q]=el?el.parentNode.textContent.trim():null;});return o;}
+  function verdictText(){
+    var v=val('q2');
+    if(v==='non'||v==='partiel')return "Votre priorité n'est pas le référencement, c'est de reprendre la main sur votre propre site web. Je commence par là, et c'est compris dans le forfait. Envoyez-moi vos réponses, je vous dis dès demain ce qu'il faut récupérer et auprès de qui.";
+    if(val('q5')==='10')return "Vos programmes et vos tarifs sont déjà écrits et votre ambition est claire. Envoyez vos réponses, je prépare un plan chiffré formation par formation avant qu'on se parle.";
+    return "Tout est réuni : un agrément, des programmes détaillés, des tarifs clairs et déjà la 2e place sur « formation taxi moto Montpellier ». Il manque un site web qui vous appartient, un calendrier à jour et une fiche Google qui répond au téléphone. Envoyez-moi ces réponses, je reviens vers vous sous 24 h avec une date de démarrage.";
+  }
+  function body(a){
+    return 'Bonjour Sabine,\n\nJ\'ai lu votre audit de '+SITE+'. Voici mes réponses :\n\n1. Qui a fait le site web : '+(a.q1||'')+'\n2. Les accès (hébergement, domaine, administration) : '+(a.q2||'')+'\n3. Engagement en cours avec un prestataire : '+(a.q3||'')+'\n4. D\'où viennent mes clients aujourd\'hui : '+(a.q4||'')+'\n5. '+DEM+' en plus qui changeraient mon année : '+(a.q5||'')+'\n\nVous pouvez me joindre au : \nLe meilleur moment pour m\'appeler : \n\n'+SIGN;
+  }
+  function refresh(){
+    var a=answers(),done=Object.keys(a).every(function(k){return a[k];});
+    if(done){var b=body(a);vt.textContent=verdictText();preview.textContent='À : '+TO+'\nObjet : '+SUBJECT+'\n\n'+b;mailBtn.href='mailto:'+TO+'?subject='+encodeURIComponent(SUBJECT)+'&body='+encodeURIComponent(b);verdict.hidden=false;verdict.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  }
+  form.addEventListener('change',function(e){if(e.target.dataset.echo){echo.textContent=e.target.dataset.echo;echo.hidden=false;}refresh();});
+  copyBtn.addEventListener('click',function(){var t=preview.textContent;function fb(){var r=document.createRange();r.selectNodeContents(preview);var s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Texte sélectionné, copiez-le';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){copyBtn.textContent='Copié';setTimeout(function(){copyBtn.textContent='Copier le mail';},2000);},fb);}else fb();});
+})();
+</script>
+
+<div class="wrap"><footer>Audit réalisé par Sabine Caizergues · <a href="https://sabinecaizergues.fr">sabinecaizergues.fr</a> · Sites web, référencement, réseaux sociaux. Relevés faits le 9 novembre 2026 sur formationtaximoto.fr, la fiche Google et les réseaux de l'entreprise ; les constats techniques sont vérifiables dans le code source des pages.</footer></div>
+
+</body>
+</html>
