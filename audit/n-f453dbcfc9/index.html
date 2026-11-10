@@ -1,0 +1,20 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Notes internes</title>
+<style>:root{--bg:#fff;--fg:#16161b;--muted:#5a5a64;--line:#e9ebef;--alt:#f6f7f9;--bad:#9c2f1f;--warn:#9a6a00}
+@media (prefers-color-scheme:dark){:root{--bg:#121411;--fg:#eef0ea;--muted:#aab0a3;--line:#2c3329;--alt:#1b1f19;--bad:#f08a78;--warn:#e6b84a}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif}.wrap{max-width:760px;margin:0 auto;padding:32px 16px}
+h1{font-size:24px;margin:0 0 6px}.muted{color:var(--muted);font-size:14px}.item{display:grid;grid-template-columns:10px 1fr;gap:14px;margin-top:22px}
+.dot{width:10px;height:10px;border-radius:50%;margin-top:8px;background:var(--warn)}.dot.bad{background:var(--bad)}h3{margin:0;font-size:17px}p{margin:4px 0 0;color:var(--muted)}
+code{background:var(--alt);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere;font-size:13px}ul{color:var(--muted)}</style></head><body><div class="wrap">
+<h1>LOC'KARTING : constats techniques internes</h1>
+<div class="muted">Relevés du 10 novembre 2026. Retirés de l'audit client, à traiter dans la mise à jour IA. Page non référencée, réservée à Sabine.</div>
+<div class="item"><span class="dot warn"></span><div><h3>Les pages introuvables répondent « erreur serveur »</h3><p>Une adresse qui n'existe pas sur le site web (par exemple <code>/llms.txt</code> ou une ancienne page) renvoie une erreur serveur (code 500) au lieu de « page introuvable » (code 404). Pour Google, une erreur serveur ressemble à un site web en panne. Et l'ancienne adresse <code>index.php?id=7&page=article</code> affiche toujours une copie de l'accueil.</p></div></div>
+<div class="item"><span class="dot warn"></span><div><h3>Un plan du site incomplet</h3><p>Le plan du site envoyé à Google ne liste que 4 adresses : la FAQ, les conditions générales et la politique de confidentialité n'y sont pas. La FAQ est pourtant la page que les assistants IA aiment le plus citer. Le site web répond aussi à la fois sur lockarting.fr et www.lockarting.fr, sans choisir.</p></div></div>
+<div class="item"><span class="dot"></span><div><h3>Autres points relevés</h3><ul>
+<li>Le site web sert à la fois lockarting.fr et www.lockarting.fr (balise canonique vers www) : rediriger l'un vers l'autre.</li>
+<li>Aucun JSON-LD sur l'accueil : ajouter LocalBusiness / SportsActivityLocation avec horaires, tarifs, avis.</li>
+<li>Plan du site : 4 adresses (accueil, /application/, /job/, mentions légales). Ajouter /php/faq.php, /php/cgv.php, /php/privacy.php.</li>
+<li>Google Maps 10/11 : 1er sur « karting Montpellier » et « karting La Grande-Motte » ; absent du top 20 sur « team building Montpellier » ; absent sur « activité à faire Montpellier » (14 résultats). Requêtes Pérols, Lattes, Palavas, Mauguio : relevé impossible (délai dépassé).</li>
+<li>Annuaire Koifaire : « complexe de loisirs : karting, paintball, laser », « la partie de 12 € à 17 € ». Accès CE : 21 € / 17 €, conforme au site web.</li>
+<li>SIRET 528 054 430 00020 relevé sur un annuaire (Hoodspot), à confirmer sur Pappers.</li>
+</ul></div></div>
+</div></body></html>
